@@ -2,21 +2,23 @@ import * as THREE from "https://unpkg.com/three@0.120.1/build/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.120.1/examples/jsm/controls/OrbitControls.js";
 //import { GUI } from 'https://threejsfundamentals.org/threejs/../3rdparty/dat.gui.module.js';
 
+
 // Other Values
 var micInputOnline = false;
-
-let grid3d = create3DGrid(3,3,3);
+let grid3d = create3DGrid(4,4,4);
+let blockAbs = 10;
 
 // THREEJS Values
 var myScene = new THREE.Scene();
-var renderer = new THREE.WebGLRenderer({ alpha: true });
+var renderer = new THREE.WebGLRenderer(); //{ alpha: true }
 renderer.setSize( window.innerWidth, window.innerHeight );  // Canvas Size
-renderer.setClearColor( 0xffffff, 10);
+renderer.setClearColor( "#000000");
 document.body.appendChild( renderer.domElement );
+
 
 // Camera
 var myCamera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
-myCamera.position.set( 0, 0, 40 );
+myCamera.position.set( 0, 0, 60 );
 myCamera.lookAt( 0, 0, 0 );
 
 // Controlls
@@ -26,47 +28,39 @@ controls.update();
 
 
 
-var points = [];
-points.push( new THREE.Vector3( -10, 0, 0 ) );
-points.push( new THREE.Vector3(   0, 10, 0 ) );
-points.push( new THREE.Vector3(  10, 0, 0 ) );
-points.push( new THREE.Vector3(  0, -10, 0 ) );
-points.push( new THREE.Vector3(  -10, 0, 0 ) );
-
-// Geometry
-var geometries = [
-    new THREE.BoxGeometry(4,4,4),
-    new THREE.BufferGeometry().setFromPoints( points ),
-];
-
-// Material
-var materials = [
-    new THREE.MeshPhongMaterial( { color: 0x00aa00 } ),
-    new THREE.LineBasicMaterial( { color: 0x0000ff } ),
-];
-
 // Lights
-const intensity = 2;
-const light = new THREE.DirectionalLight( 0xFFFFFF, intensity);
-//const light = new THREE.AmbientLight( 0xFFFFFF, intensity);
-light.position.set(10, 10, 0);
+const directional_light = new THREE.DirectionalLight( 0xFFFFFF, 1);
+directional_light.position.set(10, 1, 5);
 //light.target.position.set(-10, 0, -10);
+//const helper = new THREE.DirectionalLightHelper(directional_light);
+//myScene.add(directional_light);
+
+const point_light = new THREE.PointLight("#F0DA49", 2);
+point_light.position.set(0,0,0);
+const helper = new THREE.PointLightHelper(point_light);
+myScene.add(point_light);
+
+const skyColor = "#ffff55"; const groundColor = "#224433";
+const hemisphere_light = new THREE.HemisphereLight( skyColor, groundColor, 0.1);
+hemisphere_light.position.set(0,0,0);
+myScene.add(hemisphere_light);
+
+myScene.add(helper);
+
+
 
 
 // Form
-var _cube = new THREE.Mesh( geometries[0], materials[0] );
-var _line = new THREE.Line( geometries[1], materials[1] );
+var _cube = new THREE.Mesh( new THREE.BoxGeometry(4,4,4), new THREE.MeshPhongMaterial( { color: 0x00aa00 } ) );
 
 var cubes = []
 for (let i = 0; i < grid3d.length; i++) {
-    let cube = new THREE.Mesh( geometries[0], materials[0])
+    let cube = new THREE.Mesh( new THREE.BoxGeometry(4,4,4), new THREE.MeshPhongMaterial( { color: 0x00aa00, shininess: 150 } ))
     cubes.push(cube)
     myScene.add(cube)
 }
 
-myScene.add(light);
-myScene.add(_cube);
-//myScene.add(_line);
+//myScene.add(_cube);
 //myScene.add(light.target);
 
 //===============================================================================
@@ -96,34 +90,32 @@ function animate() {
 
         for (let i = 0; i < cubes.length; i++) {
             const cube = cubes[i];
-            cube.rotation.x = 0.5;
-            cube.rotation.y = 0.7;
+            //cube.rotation.x = 0.5;
+            //cube.rotation.y = 0.7;
 
-            //cube.position = grid3d[i].multiplyScalar(10);
-            //cube.position = new THREE.Vector3(2,5,-2);
-            let vec3 = new THREE.Vector3(grid3d[i].x, grid3d[i].y, grid3d[i].z).multiplyScalar(8);
-            cube.position.x = vec3.x + mosX;
-            cube.position.y = vec3.y + mosY;
-            cube.position.z = vec3.z;
+            let vec3 = new THREE.Vector3(grid3d[i].x, grid3d[i].y, grid3d[i].z).multiplyScalar(blockAbs);
+            cube.position.set(vec3.x,vec3.y,vec3.z)
         }
 
         cubes.forEach(e => {
             e.rotation.x = mosX/10;
         });
 
-        _cube.position.x = mosX;
-        _cube.position.y = -mosY;
-        _cube.position.z = (mosX+mosY) / 2;
-        
+
+        //_cube.position.x = mosX;
+        //_cube.position.y = -mosY;
+        //_cube.position.z = (mosX+mosY) / 2;
         //light.target.position.x = mosX
         //light.target.position.z = mosY
-
     }
 
 
     controls.update();
     renderer.render( myScene, myCamera ); } 
 animate();
+
+
+
 
 
 //===============================================================================
