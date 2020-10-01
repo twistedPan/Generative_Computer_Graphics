@@ -3,26 +3,27 @@ import { OrbitControls } from "https://unpkg.com/three@0.120.1/examples/jsm/cont
 //import { GUI } from 'https://threejsfundamentals.org/threejs/../3rdparty/dat.gui.module.js';
 
 
-// Other Values
-var micInputOnline = false;
-let grid3d = create3DGrid(4,4,4);
-let blockAbs = 10;
-
 // THREEJS Values
 var myScene = new THREE.Scene();
-var renderer = new THREE.WebGLRenderer(); //{ alpha: true }
+const canvas = document.querySelector('#c');
+const renderer = new THREE.WebGLRenderer({
+    canvas,
+    //preserveDrawingBuffer: true,
+    alpha: true,
+});
 renderer.setSize( window.innerWidth, window.innerHeight );  // Canvas Size
-renderer.setClearColor( "#E6E6FA");
+//renderer.autoClearColor = false;
+renderer.setClearColor( "#000000");
 document.body.appendChild( renderer.domElement );
 
-const color = 0xFFFFFF;  // white
-const near = 10;
-const far = 100;
-myScene.fog = new THREE.Fog(color, near, far);
+// Fog (color, near, far)
+//myScene.fog = new THREE.Fog(0xdddddd, 10, 2000);
+
 
 // Camera
-var myCamera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
-myCamera.position.set( 0, 0, 60 );
+var myCamera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+//var myCamera = new THREE.OrthographicCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+myCamera.position.set( 0, -600, 500 );
 myCamera.lookAt( 0, 0, 0 );
 
 // Controlls
@@ -31,40 +32,108 @@ var controls = new OrbitControls( myCamera, renderer.domElement );
 controls.update();
 
 
+//===============================================================================
+//  ------------------------------- LIGHTS ---------------------------------
+//===============================================================================
 
 // Lights
-const directional_light = new THREE.DirectionalLight( 0xFFFFFF, 1);
-directional_light.position.set(10, 1, 5);
-//light.target.position.set(-10, 0, -10);
+const directional_light = new THREE.DirectionalLight( 0xFFFFFF, 0.8);
+directional_light.position.set(0, 0, 400);
+directional_light.target.position.set(0, 0, 0);
 //const helper = new THREE.DirectionalLightHelper(directional_light);
 //myScene.add(directional_light);
 
-const point_light = new THREE.PointLight("#F0DA49", 2);
-point_light.position.set(0,0,0);
+const point_light = new THREE.PointLight("#ffffff", 1);
+point_light.position.set(0,0,300);
 const helper = new THREE.PointLightHelper(point_light);
 myScene.add(point_light);
 
-const skyColor = "#ffff55"; const groundColor = "#224433";
-const hemisphere_light = new THREE.HemisphereLight( skyColor, groundColor, 0.1);
-hemisphere_light.position.set(0,0,0);
+//myScene.add(helper);
+
+const skyColor = "#00ff00"; const groundColor = "#ffffff";
+const hemisphere_light = new THREE.HemisphereLight( skyColor, groundColor, 0.6);
+hemisphere_light.position.set(0,0,-10);
 myScene.add(hemisphere_light);
 
-myScene.add(helper);
 
 
+//===============================================================================
+//  ------------------------------- CLASSES ---------------------------------
+//===============================================================================
+class Element {
+    constructor(_x, _y, _z, _size, _color) {
+        this.x = _x;
+        this.y = _y;
+        this.z = _z;
+        this.vec = new THREE.Vector3( _x, _y, _z);
+        this.sX = _size[0];
+        this.sY = _size[1];
+        this.sZ = _size[2];
+        //this.color = _color;
+        this.color = colors5[Math.floor(Math.random() * colors5.length)];
+        this.model = 0;
+        this.specFreq = 0;
+    }
+
+    createModel(points) {
+        this.model = new THREE.Mesh( new THREE.BoxGeometry(this.sX,this.sY,this.sZ),new THREE.MeshPhongMaterial( { color: this.color } ) );
+
+        //this.model = new THREE.Line( new THREE.BufferGeometry().setFromPoints( points ), new THREE.LineBasicMaterial( { color: 0xffffff } ) );
+        
+        myScene.add(this.model)
+    }
+
+    display(input,seconds) {
+        let vec3 = new THREE.Vector3(this.x, this.y, this.z);
+        this.model.position.set(vec3.x,vec3.y,vec3.z) //  + this.specFreq
+        //this.model.rotation.x = this.specFreq;
+    }
+}
+
+/*
+
+var points = [];
+points.push( new THREE.Vector3( - 10, 0, 0 ) );
+points.push( new THREE.Vector3( 0, 10, 0 ) );
+points.push( new THREE.Vector3( 10, 0, 0 ) );
+
+var geometry = new THREE.BufferGeometry().setFromPoints( points );
+
+*/
+
+// Other Values
+var micInputOnline = false;
+let test = false;
+let elements = [];
+let points = [];
+let colors4 = ['#ffffff','#cccccc','#999999','#737373','#404040','#d9d9d9','#a6a6a6'];
+let colors5 = ['#ffffff', '#000000'];
+
+let radius = 20;
+for (let i=0; i<16; i++, radius+=20) {
+    elements[i] = [0];
+    points[i] = [0];
+    let circleArr = pointsOnCircle(0,0,0,radius,64);
+    for (let j=0; j<64; j++) {
+        //points[i].push(new THREE.Vector3(circleArr[j].x, circleArr[j].y, 0))
+        points[i][j] = new THREE.Vector3(circleArr[j].x, circleArr[j].y, 0);
+        elements[i][j] = new Element(circleArr[j].x,circleArr[j].y, 0, [10,10,10], 0x111111)
+    }
+}
+let eleC = 0;
+elements.forEach(i => {
+    i.forEach(e => {
+        e.createModel(points[eleC]);
+    })
+    eleC++;
+})
 
 
 // Form
-var _cube = new THREE.Mesh( new THREE.BoxGeometry(4,4,4), new THREE.MeshPhongMaterial( { color: 0x00aa00 } ) );
+var _cube = new THREE.Mesh( new THREE.BoxGeometry(100,100,100), new THREE.MeshPhongMaterial( { color: 0x00aa00 } ) );
+//_cube.position.set(0, 600, -500)
 
-var cubes = []
-for (let i = 0; i < grid3d.length; i++) {
-    let cube = new THREE.Mesh( new THREE.BoxGeometry(4,4,4), new THREE.MeshPhongMaterial( { color: 0x00aa00, shininess: 150 } ))
-    cubes.push(cube)
-    myScene.add(cube)
-}
-
-//myScene.add(_cube);
+if (test) myScene.add(_cube);
 //myScene.add(light.target);
 
 //===============================================================================
@@ -86,29 +155,46 @@ function animate() {
     }
 
     if (micInputOnline) {
-        let mosX = map(mouseX, 0, window.innerWidth, -10, 10)
-        let mosY = map(mouseY, 0, window.innerHeight, -10, 10)
 
-        _cube.rotation.x += micVolEx; 
-        _cube.rotation.y += bass/100;
-
-        for (let i = 0; i < cubes.length; i++) {
-            const cube = cubes[i];
-            //cube.rotation.x = 0.5;
-            //cube.rotation.y = 0.7;
-
-            let vec3 = new THREE.Vector3(grid3d[i].x, grid3d[i].y, grid3d[i].z).multiplyScalar(blockAbs);
-            cube.position.set(vec3.x,vec3.y,vec3.z)
+        for (let i=0, d=0; i<elements.length; i++) {
+            for (let j = 0; j < elements[i].length; j++, d++) {
+                elements[i][j].specFreq = spectrum[d];
+            }
         }
 
-        cubes.forEach(e => {
-            e.rotation.x = mosX/10;
-        });
+        elements.forEach(i => {
+            i.forEach(e => {
+                e.display();
+                e.model.geometry.vertices[0].z = e.specFreq/2;
+                e.model.geometry.vertices[2].z = e.specFreq/2;
+                e.model.geometry.vertices[5].z = e.specFreq/2;
+                e.model.geometry.vertices[7].z = e.specFreq/2;
+                
+                e.model.geometry.verticesNeedUpdate = true;
+                
+            })
+        })
+        //console.log(elements[1][1].model.geometry.vertices, "\t", elements[1][1].model.geometry.vertices[0].x);
 
+        
+        // Test Cube
+if (test) {
+    
+    _cube.geometry.vertices[0].z = spectrum[0];
+    _cube.geometry.vertices[2].z = spectrum[0];
+    _cube.geometry.vertices[5].z = spectrum[0];
+    _cube.geometry.vertices[7].z = spectrum[0];
+    
+    let moX = map(mouseX, 0,window.innerWidth, -600,600)
+    let moY = map(mouseY, 0,window.innerHeight, -600,600)
+    
+    _cube.position.x = moX;
+    _cube.position.y = -moY;
+    
+    _cube.geometry.verticesNeedUpdate = true;
+    
+}
 
-        //_cube.position.x = mosX;
-        //_cube.position.y = -mosY;
-        //_cube.position.z = (mosX+mosY) / 2;
         //light.target.position.x = mosX
         //light.target.position.z = mosY
     }
@@ -117,6 +203,14 @@ function animate() {
     controls.update();
     renderer.render( myScene, myCamera ); } 
 animate();
+
+
+
+
+
+
+
+
 
 
 
@@ -226,10 +320,12 @@ function rngOf(from,to,roundType) {switch (roundType) {case "floor" :return Math
 function rngProperty(obj,range) {let keys = Object.keys(obj); if (range) return obj[keys[ (keys.length-range) * Math.random() << 0]];else return obj[keys[ (keys.length) * Math.random() << 0]]}
 // choose random a or b
 function getOne(a, b) {arr = [a, b];return arr[Math.round(Math.random())]}
+function getRng(a) {return a[Math.floor(Math.random() * a.length)];}
 
 function easeIn(a,b,percent) { return a + (b-a)*Math.pow(percent,2)}
 function easeOut(a,b,percent) { return a + (b-a)*(1-Math.pow(1-percent,2))}
 function easeInOut(a,b,percent) { return a + (b-a)*((-Math.cos(percent*Math.PI)/2) + 0.5)}
+
 
 Number.prototype.fl = function(){return Math.floor(this)}
 Array.prototype.rngValue = function(){return this[Math.floor(Math.random() * this.length)]}

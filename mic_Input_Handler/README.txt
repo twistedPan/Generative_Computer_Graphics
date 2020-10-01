@@ -1,7 +1,12 @@
-Here the first version of the mic input handler :meow_party:
+Here the first version of the mic input handler
+
 index.html => for first User input, so chrome doesn't gets sad
+
 audio.html => main html file for your sketches
+
 mic_Input_Analyzer.js => gathers input and creates output
+
+
 how to access output? => window.soundValues
 
 soundValues.spectrum = Returns an array of amplitude values (between 0 and 255) across the frequency spectrum.
