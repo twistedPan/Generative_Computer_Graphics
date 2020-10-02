@@ -70,6 +70,7 @@ class Element {
         this.sY = _size[1];
         this.sZ = _size[2];
         //this.color = _color;
+        this.ringIndex = 0;
         this.color = colors5[Math.floor(Math.random() * colors5.length)];
         this.model = 0;
         this.specFreq = 0;
@@ -83,9 +84,10 @@ class Element {
         myScene.add(this.model)
     }
 
-    display(input,seconds) {
+    display(inc, ringIndex) {
         let vec3 = new THREE.Vector3(this.x, this.y, this.z);
-        this.model.position.set(vec3.x,vec3.y,vec3.z) //  + this.specFreq
+        this.model.position.set(vec3.x + sin(inc), vec3.y + cos(inc), vec3.z) //  + this.specFreq
+        //this.model.position.set(vec3.x + sin(inc) * (this.ringIndex*20),vec3.y + cos(inc) * (this.ringIndex*20),vec3.z) //  + this.specFreq
         //this.model.rotation.x = this.specFreq;
     }
 }
@@ -106,18 +108,35 @@ var micInputOnline = false;
 let test = false;
 let elements = [];
 let points = [];
-let colors4 = ['#ffffff','#cccccc','#999999','#737373','#404040','#d9d9d9','#a6a6a6'];
-let colors5 = ['#ffffff', '#000000'];
+let elePerRing = [];
+let colors4 = ['#ffffff', '#000000'];
+let colors5 = ['#ffffff','#cccccc','#999999','#737373','#404040','#d9d9d9','#a6a6a6'];
 
+let inc = 0;
 let radius = 20;
-for (let i=0; i<16; i++, radius+=20) {
+
+for (let i=6, k=6; i<=1024; i += k){
+    elePerRing.push(i);
+}
+console.log(elePerRing)
+
+let aaa = 0
+let start = 1024
+for (let i = 0; i < elePerRing.length; i++) {
+    aaa += elePerRing[i]
+    //console.log(aaa , (start /= 128))
+}
+
+for (let i=0; i<18; i++, radius+=20) {
     elements[i] = [0];
     points[i] = [0];
-    let circleArr = pointsOnCircle(0,0,0,radius,64);
-    for (let j=0; j<64; j++) {
+    let eleC = elePerRing[i];
+    let circleArr = pointsOnCircle(0,0,0,radius,eleC);
+    for (let j=0; j<eleC; j++) {
         //points[i].push(new THREE.Vector3(circleArr[j].x, circleArr[j].y, 0))
         points[i][j] = new THREE.Vector3(circleArr[j].x, circleArr[j].y, 0);
         elements[i][j] = new Element(circleArr[j].x,circleArr[j].y, 0, [10,10,10], 0x111111)
+        elements[i][j].ringIndex = i;
     }
 }
 let eleC = 0;
@@ -164,7 +183,10 @@ function animate() {
 
         elements.forEach(i => {
             i.forEach(e => {
-                e.display();
+                e.display(inc);
+                
+
+
                 e.model.geometry.vertices[0].z = e.specFreq/2;
                 e.model.geometry.vertices[2].z = e.specFreq/2;
                 e.model.geometry.vertices[5].z = e.specFreq/2;
@@ -198,7 +220,7 @@ if (test) {
         //light.target.position.x = mosX
         //light.target.position.z = mosY
     }
-
+    inc += 0.01;
 
     controls.update();
     renderer.render( myScene, myCamera ); } 
