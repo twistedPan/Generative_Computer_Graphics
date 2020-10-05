@@ -118,16 +118,9 @@ let radius = 20;
 for (let i=6, k=6; i<=1024; i += k){
     elePerRing.push(i);
 }
-console.log(elePerRing)
 
-let aaa = 0
-let start = 1024
-for (let i = 0; i < elePerRing.length; i++) {
-    aaa += elePerRing[i]
-    //console.log(aaa , (start /= 128))
-}
 
-for (let i=0; i<18; i++, radius+=20) {
+for (let i=0; i<18; i++, radius+=20 ) {
     elements[i] = [0];
     points[i] = [0];
     let eleC = elePerRing[i];
