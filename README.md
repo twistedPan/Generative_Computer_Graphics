@@ -1,7 +1,7 @@
-<h2>Generative Computer Graphics HS2020</h2>
+<h1>Generative Computer Graphics HS2020</h1>
 
-### Week 1:
-  - [Day 1]
+## Week 1:
+  - ### Day 1
 
       <div>
       idea: 
@@ -27,7 +27,7 @@
 
 
 
-  - [Day 2] (#Stuff)
+  - ### Day 2
   
   idea:
   bubbles grow in size through the mic input
@@ -35,7 +35,7 @@
 
   In....
   
-  - [Day 3] (#Stuff)
+  - ### Day 3
   
   Finallized the microphone input handler
   
@@ -44,15 +44,18 @@
   learned about materials and geometries
   
   
+  
 
 ### Week 2:
-  - [Day 1] (#Stuff)
-  - [Day 2] (#Stuff)
-  - [Day 3] (#Stuff)
+
+  - ### Day 1
+  - ### Day 2
+  - ### Day 3
 
 
 ### Week 3:
-  - [Day 1] (#Stuff)
-  - [Day 2] (#Stuff)
-  - [Day 3] (#Stuff)
+
+  - ### Day 1
+  - ### Day 2
+  - ### Day 3
 
