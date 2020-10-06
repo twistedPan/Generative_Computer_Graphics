@@ -115,7 +115,7 @@ class Element {
         }
     }
 
-    popAtTouche(behaviour) {
+    popAtTouch(behaviour) {
         // check if bubble touches other bubble
         //this.searchNearestNeighbor();
         if (this.diameter/2 + this.closest_Nbr.diameter/2 >= this.distToNbr) {
@@ -213,7 +213,7 @@ function draw() {
     elements.forEach(e => {
         e.display(micMap,s);
         e.wobble(micMap);
-        //e.popAtTouche();
+        //e.popAtTouch();
     });
 
 /* 
