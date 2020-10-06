@@ -63,7 +63,7 @@ function setup() {
   bubbles grow in size through the mic input
   bubbbles pop if they collide
 
-1 | 2
+O | O
 ------------ | ------------
 <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.2%20poppingBubbles%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.2%20poppingBubbles%20(2).png" width="100%">
 
@@ -73,7 +73,7 @@ function setup() {
   idea: foggy Cube grid to work  
 
   
-1 | 2
+O | O
 ------------ | ------------
 <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.3%20startWithThreejs%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.3%20startWithThreejs%20(2).png" width="100%">
 
@@ -157,7 +157,7 @@ for (let i=0; i<16; i++, radius+=66) {
 
   2. moved the whole thing to three.js
 
-1 | 2 | 3
+O | O | O
 ------------ | ------------ | -------------
 <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.2%20protoMovedToThreejs%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.2%20protoMovedToThreejs%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.2%20protoMovedToThreejs%20(3).png" width="100%">
 
@@ -172,7 +172,7 @@ for (let i=0; i<16; i++, radius+=66) {
 
       Switched the cubes with lines and ended up playing with it the whole day
     
-1 | 2 | 3
+O | O | O
 ------------ | ------------ | -------------
 <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(3).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(4).png" width="100%">
 
@@ -182,7 +182,7 @@ for (let i=0; i<16; i++, radius+=66) {
 
     deactivated the canvas refresh mode 
 
-1 | 2 | 3
+O | O | O
 ------------ | ------------ | -------------
 <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(3).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(4).png" width="100%">
 
@@ -208,7 +208,7 @@ for (let i=0; i<16; i++, radius+=66) {
           6 . 12 . 18 . 24 . 30 . 36 . 42 . 333 . 54 . 60 . . . . . 106 = 1024 ok
     
     
-1 | 2 | 3
+O | O | O
 ------------ | ------------ | -------------
 <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.5%20sortedSectors%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.5%20sortedSectors%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.5%20sortedSectors%20(3).png" width="100%">
 
