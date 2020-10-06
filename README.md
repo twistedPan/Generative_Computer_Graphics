@@ -124,7 +124,7 @@ for (let i=0; i<16; i++, radius+=66) {
     // save positions of 64 points even spaced on a cirlce with radius 'radius'
     let circleArr = pointsOnCircle(0,0,0,radius,64);
     
-    // place elements on the current cirlce 
+    // place elements on the current circle 
     for (let j=0; j<64; j++) {
         elements[i][j] = new Element(circleArr[j].x,circleArr[j].y,5,"circle")
     }   
