@@ -43,9 +43,12 @@
 <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(3).png" width="100%">
 
 ```javascript
+function setup() {
+
     mic = new p5.AudioIn()
     mic.start();
 
+}
 ```
 
 
@@ -78,11 +81,15 @@
   Mic input can also be analyzed with fft
 
 ```javascript
+function setup() {
+
     mic = new p5.AudioIn()
     mic.start();
     
     fft = new p5.FFT();
     fft.setInput(mic);
+    
+}
 ```
 
   started to work at an easy-to-implement script for others to use the microphone input
@@ -91,7 +98,7 @@
 
   - ### Day 3
   
-    Finallized the microphone input handler --> [Microphone Input Analyzer](https://github.com/twistedPan/p5_microphone_input_analyzer, "GitHub Link")
+    Finallized the microphone input handler --> [Microphone Input Analyzer](https://github.com/twistedPan/p5_microphone_input_analyzer "GitHub Link")
     
     continued to work with three.js
 
