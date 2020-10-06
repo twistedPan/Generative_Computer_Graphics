@@ -2,9 +2,9 @@
 
 ##### Table of Contents
 - [Week 1](#week-1)
-  - - [Day 1](#day-1)
-  - - [Day 2](#day-2)
-  - - [Day 3](#day-3)
+  - [Day 1](#day-1)
+  - [Day 2](#day-2)
+  - [Day 3](#day-3)
 - [Week 2](#week-2)
   - [Day 4](#day-4)
   - [Day 5](#day-5)
