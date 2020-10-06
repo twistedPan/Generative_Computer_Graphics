@@ -6,13 +6,13 @@
   - [Day 2](#day-2)
   - [Day 3](#day-3)
 - [Week 2](#week-2)
-  - [Day 1](#day-1-1)
-  - [Day 2](#day-2-1)
-  - [Day 3](#day-3-1)
+  - [Day 4](#day-4)
+  - [Day 5](#day-5)
+  - [Day 6](#day-6)
 - [Week 3](#week-3)
-  - [Day 1](#day-1-2)
-  - [Day 2](#day-2-2)
-  - [Day 3](#day-3-2)
+  - [Day 7](#day-7)
+  - [Day 8](#day-8)
+  - [Day 9](#day-9)
   
 ---
 ---
@@ -121,7 +121,7 @@ function setup() {
 ## Week 2:
 
 
-  - ### Day 1
+  - ### Day 4
 
 
     idea: Display each of the 1024 frequencies as point on a circle and create a soundwave-like circle.
@@ -166,7 +166,7 @@ function setup() {
 
 ---
   
-  - ### Day 2
+  - ### Day 5
 
 
     Switched the cubes with lines and ended up playing with it the whole day
@@ -189,7 +189,7 @@ function setup() {
 
 ---
   
-  - ### Day 3
+  - ### Day 6
     #### The Day after the Party
 
     Spend the day trying to rearrange the blocks to have a increasing amount of positions from center to end (hangover)
@@ -221,14 +221,14 @@ function setup() {
 ## Week 3:
 
 
-  - ### Day 1
+  - ### Day 7
 
 
 
 
 ---
 
-  - ### Day 2
+  - ### Day 8
 
 
 
@@ -236,7 +236,7 @@ function setup() {
 
 ---
 
-  - ### Day 3
+  - ### Day 9
 
 
 
