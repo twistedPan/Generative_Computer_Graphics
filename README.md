@@ -9,7 +9,7 @@
   - [Day 4](#day-4)
   - [Day 5](#day-5)
   - [Day 6](#day-6)
-### [Week 3](#week-3]
+### [Week 3](#week-3)
   - [Day 7](#day-7)
   - [Day 8](#day-8)
   - [Day 9](#day-9)
