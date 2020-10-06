@@ -1,15 +1,15 @@
 <h1>Generative Computer Graphics HS2020</h1>
 
 ##### Table of Contents
-[Week 1](#week-1)
-  - [Day 1](#day-1)
-  - [Day 2](#day-2)
-  - [Day 3](#day-3)
-[Week 2](#week-2)
+- [Week 1](#week-1)
+  - - [Day 1](#day-1)
+  - - [Day 2](#day-2)
+  - - [Day 3](#day-3)
+- [Week 2](#week-2)
   - [Day 4](#day-4)
   - [Day 5](#day-5)
   - [Day 6](#day-6)
-[Week 3](#week-3)
+- [Week 3](#week-3)
   - [Day 7](#day-7)
   - [Day 8](#day-8)
   - [Day 9](#day-9)
