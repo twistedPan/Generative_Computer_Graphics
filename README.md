@@ -59,42 +59,42 @@ function setup() {
   - ### Day 2
   
   
-  idea:
-  bubbles grow in size through the mic input
-  bubbbles pop if they collide
+    idea:
+    bubbles grow in size through the mic input
+    bubbbles pop if they collide
 
-O | O
------------- | ------------
-<img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.2%20poppingBubbles%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.2%20poppingBubbles%20(2).png" width="100%">
+      O | O
+      ------------ | ------------
+      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.2%20poppingBubbles%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.2%20poppingBubbles%20(2).png" width="100%">
 
 
 
-  started to look at three.js
-  idea: foggy Cube grid to work  
+    started to look at three.js
+    idea: foggy Cube grid to work  
 
   
-O | O
------------- | ------------
-<img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.3%20startWithThreejs%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.3%20startWithThreejs%20(2).png" width="100%">
+      O | O
+      ------------ | ------------
+      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.3%20startWithThreejs%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.3%20startWithThreejs%20(2).png" width="100%">
 
 
 
-  realization:
-  Mic input can also be analyzed with fft
+    realization:
+    Mic input can also be analyzed with fft
 
-```javascript
-function setup() {
+      ```javascript
+      function setup() {
 
-    mic = new p5.AudioIn()
-    mic.start();
-    
-    fft = new p5.FFT();
-    fft.setInput(mic);
-    
-}
-```
+          mic = new p5.AudioIn()
+          mic.start();
 
-  started to work at an easy-to-implement script for others to use the microphone input
+          fft = new p5.FFT();
+          fft.setInput(mic);
+
+      }
+      ```
+
+    started to work at an easy-to-implement script for others to use the microphone input
 
 ---
 
@@ -125,41 +125,41 @@ function setup() {
   - ### Day 1
 
 
-      idea: Display each of the 1024 frequencies as point on a circle and create a soundwave-like circle.
+    idea: Display each of the 1024 frequencies as point on a circle and create a soundwave-like circle.
 
 
-  1. created a 2D sketch in p5.js 
+    1. created a 2D sketch in p5.js 
 
-1 | 2 | 3
------------- | ------------ | -------------
-<img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(3).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(2).png" width="100%">
+      1 | 2 | 3
+      ------------ | ------------ | -------------
+      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(3).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(2).png" width="100%">
 
-To create the circles around the circles, i fill a 2-dimensional Array 
-```javascript
-let elements = [];
-let radius = 66;
+    To create the circles around the circles, i fill a 2-dimensional Array 
+      ```javascript
+      let elements = [];
+      let radius = 66;
 
-for (let i=0; i<16; i++, radius+=66) {
-    // create second dimension for Array elements
-    elements[i] = [0];
-    
-    // save positions of 64 points even spaced on a cirlce with radius 'radius'
-    let circleArr = pointsOnCircle(0,0,0,radius,64);
-    
-    // place elements on the current circle 
-    for (let j=0; j<64; j++) {
-        elements[i][j] = new Element(circleArr[j].x,circleArr[j].y,5,"circle")
-    }   
-    
-}
-```
+      for (let i=0; i<16; i++, radius+=66) {
+          // create second dimension for Array elements
+          elements[i] = [0];
+
+          // save positions of 64 points even spaced on a cirlce with radius 'radius'
+          let circleArr = pointsOnCircle(0,0,0,radius,64);
+
+          // place elements on the current circle 
+          for (let j=0; j<64; j++) {
+              elements[i][j] = new Element(circleArr[j].x,circleArr[j].y,5,"circle")
+          }   
+
+      }
+      ```
 
 
-  2. moved the whole thing to three.js
+    2. moved the whole thing to three.js
 
-O | O | O
------------- | ------------ | -------------
-<img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.2%20protoMovedToThreejs%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.2%20protoMovedToThreejs%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.2%20protoMovedToThreejs%20(3).png" width="100%">
+      O | O | O
+      ------------ | ------------ | -------------
+      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.2%20protoMovedToThreejs%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.2%20protoMovedToThreejs%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.2%20protoMovedToThreejs%20(3).png" width="100%">
 
 
 
@@ -170,21 +170,21 @@ O | O | O
   - ### Day 2
 
 
-      Switched the cubes with lines and ended up playing with it the whole day
+    Switched the cubes with lines and ended up playing with it the whole day
     
-O | O | O
------------- | ------------ | -------------
-<img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(3).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(4).png" width="100%">
+      O | O | O
+      ------------ | ------------ | -------------
+      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(3).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(4).png" width="100%">
 
-<img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(1).gif" width="50%">
+      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(1).gif" width="50%">
 
 
 
     deactivated the canvas refresh mode 
 
-O | O | O
------------- | ------------ | -------------
-<img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(3).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(4).png" width="100%">
+      O | O | O
+      ------------ | ------------ | -------------
+      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(3).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(4).png" width="100%">
 
 <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(1).gif" width="50%">
 
@@ -198,23 +198,21 @@ O | O | O
 
     Calculating new positioning for cubes:
 
-          old 16 * 64 / 64 . 64 . 64 . 64 . 64 . 64 .... 1024
+        old 16 * 64 / 64 . 64 . 64 . 64 . 64 . 64 .... 1024
 
-          new
-          8 . 12 . 16 . 24 . 32 . 333 . 64 . 96 . 128 . 192 . 333 . 384 ....	no
-
-          8 . 16 . 24 . 32 . 40 . 333 . 54 . 62 . 68 . 74 . 82 . 90 . 98 . 106 ...  no
-
-          6 . 12 . 18 . 24 . 30 . 36 . 42 . 333 . 54 . 60 . . . . . 106 = 1024 ok
+        new
+        8 . 12 . 16 . 24 . 32 . 48 . 64 . 96 . 128 . 192 . 333 . 384 ....	        nope
+        8 . 16 . 24 . 32 . 40 . 48 . 54 . 62 . 68 . 74 . 82 . 90 . 98 . 106 ...   nope
+        6 . 12 . 18 . 24 . 30 . 36 . 42 . 333 . 54 . 60 . . . . . 106 = 1024      works
     
     
-O | O | O
------------- | ------------ | -------------
-<img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.5%20sortedSectors%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.5%20sortedSectors%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.5%20sortedSectors%20(3).png" width="100%">
+      O | O | O
+      ------------ | ------------ | -------------
+      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.5%20sortedSectors%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.5%20sortedSectors%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.5%20sortedSectors%20(3).png" width="100%">
 
 
-  Realisation:
-    Math is even harder if you've a hangover.
+    Realisation:
+      Math is even harder if you've a hangover.
 
 
 ---
