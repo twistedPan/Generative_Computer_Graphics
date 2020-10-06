@@ -24,20 +24,19 @@
   - ### Day 1
   
   
-      idea: 
-      get Mic input and create interactable sketch
+      __Idea:__
+      get Mic input and create interactable sketch.
 
-      problem: 
-      Web technologies safety standarts
-
+      __Problem:__
+      Web technologies safety standarts.
       Web browser didn't get the input from the mic, p5 was throwing error messages, some older sketches still working the new ones didn't worked.
 
-      Solution:
+      __Solution:__
       Took an older sketch and copy paste the mic part, 
       wrote a intro page to get trough the chrome safety part
       ( create user input before audio can play ), 
 
-      realization:
+      __Realization:__
       Mic input consists only of volume, no frequenzies possible.
 
 1 | 2 | 3
@@ -59,9 +58,9 @@ function setup() {
   - ### Day 2
   
   
-    idea:
-    bubbles grow in size through the mic input
-    bubbbles pop if they collide
+    __Idea:__
+    bubbles grow in size through the mic input.
+    bubbbles pop if they collide.
 
       O | O
       ------------ | ------------
@@ -79,8 +78,8 @@ function setup() {
 
 
 
-    realization:
-    Mic input can also be analyzed with fft
+    __Realization:__
+    Mic input can also be analyzed with fft.
 
       ```javascript
       function setup() {
@@ -94,7 +93,7 @@ function setup() {
       }
       ```
 
-    started to work at an easy-to-implement script for others to use the microphone input
+    started to work at an easy-to-implement script for others to use the microphone input.
 
 ---
 
@@ -180,7 +179,7 @@ function setup() {
 
 
 
-    deactivated the canvas refresh mode 
+    deactivated the canvas refresh mode and played with the camera around. 
 
       O | O | O
       ------------ | ------------ | -------------
@@ -191,9 +190,9 @@ function setup() {
 ---
   
   - ### Day 3
+    #### The Day after the Party
 
-
-    Spend the day trying to rearrange the blocks to have a progressive amount from center to end (hangover)
+    Spend the day trying to rearrange the blocks to have a increasing amount of positions from center to end (hangover)
     Did it after 3 hours
 
     Calculating new positioning for cubes:
