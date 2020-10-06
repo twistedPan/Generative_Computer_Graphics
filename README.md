@@ -93,7 +93,7 @@
 
 
 
-
+---
 
 
 ## Week 2:
@@ -106,15 +106,34 @@
       idea: Display each of the 1024 frequencies as point on a circle and create a soundwave-like circle.
 
 
-      1. created a 2D sketch in p5.js 
+  1. created a 2D sketch in p5.js 
 
 1 | 2 | 3
 ------------ | ------------ | -------------
 <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(3).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(2).png" width="100%">
 
+To create the circles around the circles, i fill a 2-dimensional Array 
+```javascript
+let elements = [];
+let radius = 66;
+
+for (let i=0; i<16; i++, radius+=66) {
+    // create second dimension for Array elements
+    elements[i] = [0];
+    
+    // save positions of 64 points even spaced on a cirlce with radius 'radius'
+    let circleArr = pointsOnCircle(0,0,0,radius,64);
+    
+    // place elements on the current cirlce 
+    for (let j=0; j<64; j++) {
+        elements[i][j] = new Element(circleArr[j].x,circleArr[j].y,5,"circle")
+    }   
+    
+}
+```
 
 
-      2. moved the whole thing to three.js
+  2. moved the whole thing to three.js
 
 1 | 2 | 3
 ------------ | ------------ | -------------
@@ -175,6 +194,8 @@
   Realisation:
     Math is even harder if you've a hangover.
 
+
+---
 
 
 ## Week 3:
