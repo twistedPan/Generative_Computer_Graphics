@@ -6,13 +6,13 @@
   - [Day 2](#day-2)
   - [Day 3](#day-3)
 - [Week 2](#week-2)
-  - [Day 4](#day-1-1)
-  - [Day 5](#day-2-1)
-  - [Day 6](#day-3-1)
+  - [Day 1](#day-1-1)
+  - [Day 2](#day-2-1)
+  - [Day 3](#day-3-1)
 - [Week 3](#week-3)
-  - [Day 7](#day-1-2)
-  - [Day 8](#day-2-2)
-  - [Day 9](#day-3-2)
+  - [Day 1](#day-1-2)
+  - [Day 2](#day-2-2)
+  - [Day 3](#day-3-2)
   
 ---
 ---
