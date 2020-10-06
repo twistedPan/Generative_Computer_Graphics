@@ -19,6 +19,8 @@
 
 
 ## Week 1:
+
+
   - ### Day 1
   
   
@@ -52,7 +54,7 @@ function setup() {
 ```
 
 
-
+---
 
   - ### Day 2
   
@@ -94,7 +96,7 @@ function setup() {
 
   started to work at an easy-to-implement script for others to use the microphone input
 
-
+---
 
   - ### Day 3
   
@@ -113,12 +115,11 @@ function setup() {
 
 
 
-
+---
 ---
 
 
 ## Week 2:
-
 
 
   - ### Day 1
@@ -164,7 +165,7 @@ for (let i=0; i<16; i++, radius+=66) {
 
 
 
-
+---
   
   - ### Day 2
 
@@ -187,7 +188,7 @@ for (let i=0; i<16; i++, radius+=66) {
 
 <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(1).gif" width="50%">
 
-
+---
   
   - ### Day 3
 
@@ -217,10 +218,10 @@ for (let i=0; i<16; i++, radius+=66) {
 
 
 ---
+---
 
 
 ## Week 3:
-
 
 
   - ### Day 1
@@ -228,7 +229,7 @@ for (let i=0; i<16; i++, radius+=66) {
 
 
 
-
+---
 
   - ### Day 2
 
@@ -236,7 +237,7 @@ for (let i=0; i<16; i++, radius+=66) {
 
 
 
-
+---
 
   - ### Day 3
 
