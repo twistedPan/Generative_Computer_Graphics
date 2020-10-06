@@ -42,8 +42,11 @@
 ------------ | ------------ | -------------
 <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(3).png" width="100%">
 
+```javascript
+    mic = new p5.AudioIn()
+    mic.start();
 
-
+```
 
 
 
@@ -51,9 +54,9 @@
   - ### Day 2
   
   
-      idea:
-      bubbles grow in size through the mic input
-      bubbbles pop if they collide
+  idea:
+  bubbles grow in size through the mic input
+  bubbbles pop if they collide
 
 1 | 2
 ------------ | ------------
@@ -61,8 +64,8 @@
 
 
 
-      started to look at three.js
-      idea: foggy Cube grid to work  
+  started to look at three.js
+  idea: foggy Cube grid to work  
 
   
 1 | 2
@@ -71,17 +74,28 @@
 
 
 
+  realization:
+  Mic input can also be analyzed with fft
 
+```javascript
+    mic = new p5.AudioIn()
+    mic.start();
+    
+    fft = new p5.FFT();
+    fft.setInput(mic);
+```
+
+  started to work at an easy-to-implement script for others to use the microphone input
 
 
 
   - ### Day 3
   
-      Finallized the microphone input handler
+    Finallized the microphone input handler --> [Microphone Input Analyzer](https://github.com/twistedPan/p5_microphone_input_analyzer, "GitHub Link")
+    
+    continued to work with three.js
 
-      continued to work with three.js
-
-      learned about materials and geometries
+    learned about materials, geometries, cameras, lights, etc.
 
 
 
