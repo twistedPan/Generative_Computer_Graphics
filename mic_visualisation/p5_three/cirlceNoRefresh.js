@@ -23,7 +23,7 @@ document.body.appendChild( renderer.domElement );
 // Camera
 var myCamera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
 //var myCamera = new THREE.OrthographicCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-myCamera.position.set( 0, -700, 400 );
+myCamera.position.set( 0, -200, 600 );
 myCamera.lookAt( 0, 0, 0 );
 
 // Controlls
@@ -120,8 +120,8 @@ let colLow = [];
 let colMid = [];
 let colHigh = [];
 let colBW = ['#ffffff', '#000000'];
-let fromC = [10, 0, 255]; // [255, 0, 255]; // 
-let toC =   [51, 0, 51]; // [51, 153, 51]; // 
+let fromC = [0, 0, 255]; // [255, 0, 255]; // 
+let toC =   [255, 0, 0]; // [51, 153, 51]; // 
 let ringCount = 0;
 let inc = 0;
 let radius = 20;
