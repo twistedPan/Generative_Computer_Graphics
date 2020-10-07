@@ -93,7 +93,7 @@ class Element {
 
     display(inc) {
         let vec3 = new THREE.Vector3(this.x, this.y, this.z);
-        this.model.position.set(vec3.x + sin(inc), vec3.y + cos(inc), vec3.z-(this.ringIndex*cos(inc)*10) + sin(inc)*30) //  + this.specFreq
+        this.model.position.set(vec3.x + sin(inc), vec3.y + cos(inc), vec3.z-(this.ringIndex*cos(inc)*10)) //  + this.specFreq
         //this.model.position.set(vec3.x + sin(inc) * (this.ringIndex*20),vec3.y + cos(inc) * (this.ringIndex*20),vec3.z) //  + this.specFreq
         //this.model.rotation.x = this.specFreq;
     }
@@ -120,8 +120,8 @@ let colLow = [];
 let colMid = [];
 let colHigh = [];
 let colBW = ['#ffffff', '#000000'];
-let fromC = [255, 0, 255];
-let toC =   [0, 255, 0];
+let fromC = [255,255,255]//[255, 0, 255]; //[10, 0, 255]; // 
+let toC =   [0,0,0]//[51, 153, 51]; //[51, 0, 51]; // 
 let ringCount = 0;
 let inc = 0;
 let radius = 20;
@@ -378,8 +378,9 @@ function lerpFromTo(from, to, amt) {
 function componentToHex(c) {
     let hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
-  }
-  function rgbToHex(color) {
+}
+function rgbToHex(color) {
+    color = floorArr(color);
     return "#" + componentToHex(color[0]) + componentToHex(color[1]) + componentToHex(color[2]);
   }
 
@@ -402,13 +403,12 @@ function easeIn(a,b,percent) { return a + (b-a)*Math.pow(percent,2)}
 function easeOut(a,b,percent) { return a + (b-a)*(1-Math.pow(1-percent,2))}
 function easeInOut(a,b,percent) { return a + (b-a)*((-Math.cos(percent*Math.PI)/2) + 0.5)}
 
-function clamp(val, min, max) {
-    return Math.max(min, Math.min(max, val));
-}
+function clamp(val, min, max) {return Math.max(min, Math.min(max, val));}
+
+function floorArr(a) {return a.map(e => Math.floor(e))}
 
 Number.prototype.fl = function(){return Math.floor(this)}
 Array.prototype.rngValue = function(){return this[Math.floor(Math.random() * this.length)]}
-
 /*
 
 */
