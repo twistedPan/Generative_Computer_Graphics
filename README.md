@@ -185,7 +185,7 @@ function setup() {
       ------------ | ------------ | -------------
       <img src="/pictures/Week2.3%20linesNoCubes%20(1).png" width="100%"> | <img src="/pictures/Week2.3%20linesNoCubes%20(3).png" width="100%"> | <img src="/pictures/Week2.3%20linesNoCubes%20(4).png" width="100%">
 
-      <img src="/pictures/Week2.3%20linesNoCubes%20(1).gif" width="30%">
+      
 
 
 
@@ -195,7 +195,7 @@ function setup() {
       ------------ | ------------ | -------------
       <img src="/pictures/Week2.4%20noCanRefresh%20(2).png" width="100%"> | <img src="/pictures/Week2.4%20noCanRefresh%20(3).png" width="100%"> | <img src="/pictures/Week2.4%20noCanRefresh%20(4).png" width="100%">
 
-      <img src="/pictures/Week2.4%20noCanRefresh%20(1).gif" width="30%">
+      
 
 ---
   
