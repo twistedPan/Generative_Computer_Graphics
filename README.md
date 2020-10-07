@@ -41,7 +41,7 @@
 
       O | O | O
       ------------ | ------------ | -------------
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(3).png" width="100%">
+      <img src="/pictures/week1.1%20randomBubbles%20(1).png" width="100%"> | <img src="/pictures/week1.1%20randomBubbles%20(2).png" width="100%"> | <img src="/pictures/week1.1%20randomBubbles%20(3).png" width="100%">
 
 ```javascript
 function setup() {
@@ -66,7 +66,7 @@ function setup() {
 
       O | O
       ------------ | ------------
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.2%20poppingBubbles%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.2%20poppingBubbles%20(2).png" width="100%">
+      <img src="/pictures/week1.2%20poppingBubbles%20(1).png" width="100%"> | <img src="/pictures/week1.2%20poppingBubbles%20(2).png" width="100%">
 
 
 
@@ -77,7 +77,7 @@ function setup() {
   
       O | O
       ------------ | ------------
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.3%20startWithThreejs%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.3%20startWithThreejs%20(2).png" width="100%">
+      <img src="/pictures/week1.3%20startWithThreejs%20(1).png" width="100%"> | <img src="/pictures/week1.3%20startWithThreejs%20(2).png" width="100%">
 
 
 
@@ -130,7 +130,7 @@ function setup() {
     
       Bradley G Munkowitz | Marcin Ignac
       | :------------: | :------------: |
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/_ora-summoners-halo-Bradley-G-Munkowitz.jpg" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/_Inflows-Outflows-by-Marcin-Ignac.png" width="50%">
+      <img src="/pictures/_ora-summoners-halo-Bradley-G-Munkowitz.jpg" width="100%"> | <img src="/pictures/_Inflows-Outflows-by-Marcin-Ignac.png" width="50%">
     
     
     __Idea:__ Display each of the 1024 frequencies as point on a circle and create a soundwave-like circle.
@@ -141,7 +141,7 @@ function setup() {
 
       O | O | O
       ------------ | ------------ | -------------
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(3).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(2).png" width="100%">
+      <img src="/pictures/Week2.1%20prototype2D%20(1).png" width="100%"> | <img src="/pictures/Week2.1%20prototype2D%20(3).png" width="100%"> | <img src="/pictures/Week2.1%20prototype2D%20(2).png" width="100%">
 
     To create the circles around the circles, i fill a 2-dimensional Array 
       ```javascript
@@ -168,7 +168,7 @@ function setup() {
 
       O | O | O
       ------------ | ------------ | -------------
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.2%20protoMovedToThreejs%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.2%20protoMovedToThreejs%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.2%20protoMovedToThreejs%20(3).png" width="100%">
+      <img src="/pictures/Week2.2%20protoMovedToThreejs%20(1).png" width="100%"> | <img src="/pictures/Week2.2%20protoMovedToThreejs%20(2).png" width="100%"> | <img src="/pictures/Week2.2%20protoMovedToThreejs%20(3).png" width="100%">
 
 
 
@@ -183,9 +183,9 @@ function setup() {
     
       O | O | O
       ------------ | ------------ | -------------
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(3).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(4).png" width="100%">
+      <img src="/pictures/Week2.3%20linesNoCubes%20(1).png" width="100%"> | <img src="/pictures/Week2.3%20linesNoCubes%20(3).png" width="100%"> | <img src="/pictures/Week2.3%20linesNoCubes%20(4).png" width="100%">
 
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(1).gif" width="30%">
+      <img src="/pictures/Week2.3%20linesNoCubes%20(1).gif" width="30%">
 
 
 
@@ -193,9 +193,9 @@ function setup() {
 
       O | O | O
       ------------ | ------------ | -------------
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(3).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(4).png" width="100%">
+      <img src="/pictures/Week2.4%20noCanRefresh%20(2).png" width="100%"> | <img src="/pictures/Week2.4%20noCanRefresh%20(3).png" width="100%"> | <img src="/pictures/Week2.4%20noCanRefresh%20(4).png" width="100%">
 
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(1).gif" width="30%">
+      <img src="/pictures/Week2.4%20noCanRefresh%20(1).gif" width="30%">
 
 ---
   
@@ -222,7 +222,7 @@ function setup() {
     
       O | O | O
       ------------ | ------------ | -------------
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.5%20sortedSectors%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.5%20sortedSectors%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.5%20sortedSectors%20(3).png" width="100%">
+      <img src="/pictures/Week2.5%20sortedSectors%20(1).png" width="100%"> | <img src="/pictures/Week2.5%20sortedSectors%20(2).png" width="100%"> | <img src="/pictures/Week2.5%20sortedSectors%20(3).png" width="100%">
 
 
     Realisation:
