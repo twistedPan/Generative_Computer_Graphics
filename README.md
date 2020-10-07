@@ -283,6 +283,10 @@ function setup() {
       
       __Things Done:__
       Colors are learping from inside to outside
+      
+      _ | _ | _
+      ------------ | ------------ | -------------
+      <img src="pictures/Week3.1%20newColors%20(1).png" width="100%"> | <img src="pictures/Week3.1%20newColors%20(3).png" width="100%"> | <img src="pictures/Week3.1%20newColors%20(4).png" width="100%">
 
 ---
 
