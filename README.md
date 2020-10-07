@@ -189,7 +189,7 @@ function setup() {
   
   - ### Day 5
 
-  [Play it here](https://twistedpan.github.io/genCom/mic_visualisation/p5_three/lines3D_EQ.html)
+    [Play it here](https://twistedpan.github.io/genCom/mic_visualisation/p5_three/lines3D_EQ.html)
 
     Switched the cubes with lines and ended up playing with it the whole day
     
@@ -224,10 +224,10 @@ function setup() {
         new
         n +4, +4, +8, +8, +16, ....
         8 . 12 . 16 . 24 . 32 . 48 . 64 . 96 . 128 . 192 ....	  nope
-        
+
         n = n+8
         8 . 16 . 24 . 32 . 40 . 48 . 54 . 62 . 68 . 74 ....     nope
-        
+
         n = n+6
         6 . 12 . 18 . 24 . 30 . 36 . 42 . 48 . 54 . 60 . . 108 = 1026   almost works
     
@@ -278,8 +278,8 @@ function setup() {
       __Solution:__
       correct lerp = amt * (stop - start) + start
 
-      __Realization:__
-
+      Published the gitHub repository, changed all paths and edited the index files to display every sketch
+      
 
 ---
 
