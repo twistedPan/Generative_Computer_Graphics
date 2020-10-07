@@ -260,7 +260,7 @@ function setup() {
       ```javascript
       // lerps from color1 to color2
       function lerpFromTo(from, to, amt) {
-          amt = Math.max(Math.min(amt, 1), 0);
+          amt = clamp(amt,0,1);
           let f1 = from[0]; let f2 = from[1]; let f3 = from[2];
           let t1 = to[0]; let t2 = to[1]; let t3 = to[2];
 
