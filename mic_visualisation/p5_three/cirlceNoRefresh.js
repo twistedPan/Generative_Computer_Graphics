@@ -43,7 +43,7 @@ directional_light.target.position.set(0, 0, 0);
 //const helper = new THREE.DirectionalLightHelper(directional_light);
 //myScene.add(directional_light);
 
-const point_light = new THREE.PointLight("#ffffff", 1);
+const point_light = new THREE.PointLight("#ffff00", 3);
 point_light.position.set(0,0,300);
 const helper = new THREE.PointLightHelper(point_light);
 myScene.add(point_light);
