@@ -278,8 +278,11 @@ function setup() {
       __Solution:__
       correct lerp = amt * (stop - start) + start
 
+      __GitHub:__
       Published the gitHub repository, changed all paths and edited the index files to display every sketch
       
+      __Things Done:__
+      Colors are learping from inside to outside
 
 ---
 
