@@ -211,13 +211,13 @@ function setup() {
 
         new
         n +4, +4, +8, +8, +16, ....
-        8 . 12 . 16 . 24 . 32 . 48 . 64 . 96 . 128 . 192 . 333 . 384 ....	        nope
+        8 . 12 . 16 . 24 . 32 . 48 . 64 . 96 . 128 . 192 ....	  nope
         
         n = n+8
-        8 . 16 . 24 . 32 . 40 . 48 . 54 . 62 . 68 . 74 . 82 . 90 . 98 . 106 ...   nope
+        8 . 16 . 24 . 32 . 40 . 48 . 54 . 62 . 68 . 74 ....     nope
         
         n = n+6
-        6 . 12 . 18 . 24 . 30 . 36 . 42 . 333 . 54 . 60 . . . . . 106 = 1024      works
+        6 . 12 . 18 . 24 . 30 . 36 . 42 . 48 . 54 . 60 . . 108 = 1026   almost works
     
     
       O | O | O
@@ -239,13 +239,32 @@ function setup() {
   - ### Day 7
 
       __Idea:__ Expand the cube circle. 
-      - More colors
+      - More colors, maybe a gradient
       - More forms
-      - 
+      - More action in the background
 
       __Problem:__
+      wrote a wrong lerpFunction
+      ```javascript
+      // lerps from color1 to color2
+      function lerpFromTo(from, to, amt) {
+          amt = Math.max(Math.min(amt, 1), 0);
+          let f1 = from[0]; let f2 = from[1]; let f3 = from[2];
+          let t1 = to[0]; let t2 = to[1]; let t3 = to[2];
 
+          let r = f1 - t1 * amt;
+          r = clamp(r,0,255);
+          let g = f2 - t2 * amt;
+          g = clamp(g,0,255);
+          let b = f3 - t3 * amt;
+          b = clamp(b,0,255);
+
+          let color = [r,g,b]
+          return color;
+      }
+      ```
       __Solution:__
+      correct lerp = amt * (stop - start) + start
 
       __Realization:__
 
