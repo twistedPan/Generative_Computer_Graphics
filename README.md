@@ -126,13 +126,20 @@ function setup() {
 
   - ### Day 4
 
-
-    idea: Display each of the 1024 frequencies as point on a circle and create a soundwave-like circle.
-
+    __Homework:__ Read more about the history of gernerative art and look for an artist, whose art you like.
+    
+    Bradley G Munkowitz | Marcin Ignac
+    ------------ | ------------
+    <img src="https://github.com/twistedPan/genCom/blob/master/pictures/_ora-summoners-halo-Bradley-G-Munkowitz.jpg" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/_Inflows-Outflows-by-Marcin-Ignac.png" width="100%">
+    
+    
+    __Idea:__ Display each of the 1024 frequencies as point on a circle and create a soundwave-like circle.
+    Like the picture of Bradley G Munkowitz
+    
 
     1. created a 2D sketch in p5.js 
 
-      1 | 2 | 3
+      O | O | O
       ------------ | ------------ | -------------
       <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(3).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(2).png" width="100%">
 
@@ -226,12 +233,47 @@ function setup() {
 
   - ### Day 7
 
+      __Idea:__ Expand the cube circle. 
+      - More colors
+      - More forms
+      - 
 
+      __Problem:__
+
+      __Solution:__
+
+      __Realization:__
 
 
 ---
 
   - ### Day 8
+
+
+
+
+
+
+
+
+
+
+
+a
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
