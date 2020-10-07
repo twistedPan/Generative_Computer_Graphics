@@ -44,7 +44,7 @@
     __Realization:__
     Mic input consists only of volume, no frequenzies possible.
 
-      O | O | O
+      _ | _ | _
       ------------ | ------------ | -------------
       <img src="pictures/week1.1%20randomBubbles%20(1).png" width="100%"> | <img src="pictures/week1.1%20randomBubbles%20(2).png" width="100%"> | <img src="pictures/week1.1%20randomBubbles%20(3).png" width="100%">
 
@@ -70,7 +70,7 @@ function setup() {
     
     __Realization:__ That worked very well.
 
-      O | O
+      _ | _
       ------------ | ------------
       <img src="pictures/week1.2%20poppingBubbles%20(1).png" width="100%"> | <img src="pictures/week1.2%20poppingBubbles%20(2).png" width="100%">
 
@@ -82,7 +82,7 @@ function setup() {
 
     [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/cubeGrid.html)
     
-      O | O
+      _ | _
       ------------ | ------------
       <img src="pictures/week1.3%20startWithThreejs%20(1).png" width="100%"> | <img src="pictures/week1.3%20startWithThreejs%20(2).png" width="100%">
 
@@ -137,7 +137,7 @@ function setup() {
     
       Bradley G Munkowitz | Marcin Ignac
       | :------------: | :------------: |
-      <img src="pictures/_ora-summoners-halo-Bradley-G-Munkowitz.jpg" width="100%"> | <img src="pictures/_Inflows-Outflows-by-Marcin-Ignac.png" width="50%">
+      <img src="pictures/i_ora-summoners-halo-Bradley-G-Munkowitz.jpg" width="100%"> | <img src="pictures/i_Inflows-Outflows-by-Marcin-Ignac.png" width="50%">
     
     
     __Idea:__ Display each of the 1024 frequencies as point on a circle and create a soundwave-like circle.
@@ -148,7 +148,7 @@ function setup() {
     
     [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/circleEq.html)
 
-      O | O | O
+      _ | _ | _
       ------------ | ------------ | -------------
       <img src="pictures/Week2.1%20prototype2D%20(1).png" width="100%"> | <img src="pictures/Week2.1%20prototype2D%20(3).png" width="100%"> | <img src="pictures/Week2.1%20prototype2D%20(2).png" width="100%">
 
@@ -177,7 +177,7 @@ function setup() {
     
     [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ.html)
 
-      O | O | O
+      _ | _ | _
       ------------ | ------------ | -------------
       <img src="pictures/Week2.2%20protoMovedToThreejs%20(1).png" width="100%"> | <img src="pictures/Week2.2%20protoMovedToThreejs%20(2).png" width="100%"> | <img src="pictures/Week2.2%20protoMovedToThreejs%20(3).png" width="100%">
 
@@ -193,7 +193,7 @@ function setup() {
 
     Switched the cubes with lines and ended up playing with it the whole day
     
-      O | O | O
+      _ | _ | _
       ------------ | ------------ | -------------
       <img src="pictures/Week2.3%20linesNoCubes%20(1).png" width="100%"> | <img src="pictures/Week2.3%20linesNoCubes%20(3).png" width="100%"> | <img src="pictures/Week2.3%20linesNoCubes%20(4).png" width="100%">
 
@@ -203,7 +203,7 @@ function setup() {
 
     deactivated the canvas refresh mode and played with the camera around. 
 
-      O | O | O
+      _ | _ | _
       ------------ | ------------ | -------------
       <img src="pictures/Week2.4%20noCanRefresh%20(2).png" width="100%"> | <img src="pictures/Week2.4%20noCanRefresh%20(3).png" width="100%"> | <img src="pictures/Week2.4%20noCanRefresh%20(4).png" width="100%">
 
@@ -232,7 +232,7 @@ function setup() {
         6 . 12 . 18 . 24 . 30 . 36 . 42 . 48 . 54 . 60 . . 108 = 1026   almost works
     
     
-      O | O | O
+      _ | _ | _
       ------------ | ------------ | -------------
       <img src="pictures/Week2.5%20sortedSectors%20(1).png" width="100%"> | <img src="pictures/Week2.5%20sortedSectors%20(2).png" width="100%"> | <img src="pictures/Week2.5%20sortedSectors%20(3).png" width="100%">
 
@@ -260,7 +260,7 @@ function setup() {
       ```javascript
       // lerps from color1 to color2
       function lerpFromTo(from, to, amt) {
-          amt = Math.max(Math.min(amt, 1), 0);
+          amt = clamp(amt,0,1);
           let f1 = from[0]; let f2 = from[1]; let f3 = from[2];
           let t1 = to[0]; let t2 = to[1]; let t3 = to[2];
 
@@ -278,8 +278,15 @@ function setup() {
       __Solution:__
       correct lerp = amt * (stop - start) + start
 
+      __GitHub:__
       Published the gitHub repository, changed all paths and edited the index files to display every sketch
       
+      __Things Done:__
+      Colors are learping from inside to outside
+      
+      _ | _ | _
+      ------------ | ------------ | -------------
+      <img src="pictures/Week3.1%20newColors%20(1).png" width="100%"> | <img src="pictures/Week3.1%20newColors%20(3).png" width="100%"> | <img src="pictures/Week3.1%20newColors%20(4).png" width="100%">
 
 ---
 
