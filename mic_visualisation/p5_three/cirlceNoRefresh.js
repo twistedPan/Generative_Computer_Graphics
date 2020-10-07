@@ -8,12 +8,12 @@ var myScene = new THREE.Scene();
 const canvas = document.querySelector('#c');
 const renderer = new THREE.WebGLRenderer({
     canvas,
-    //preserveDrawingBuffer: true,
+    preserveDrawingBuffer: true,
     alpha: true,
 });
 renderer.setSize( window.innerWidth, window.innerHeight );  // Canvas Size
-//renderer.autoClearColor = false;
-renderer.setClearColor( "#000000");
+renderer.autoClearColor = false;
+//renderer.setClearColor( "#000000");
 document.body.appendChild( renderer.domElement );
 
 // Fog (color, near, far)
