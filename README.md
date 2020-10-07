@@ -61,6 +61,8 @@ function setup() {
     __Idea:__
     bubbles grow in size through the mic input.
     bubbbles pop if they collide.
+    
+    __Realization:__ That worked very well.
 
       O | O
       ------------ | ------------
@@ -69,7 +71,8 @@ function setup() {
 
 
     started to look at three.js
-    idea: foggy Cube grid to work  
+    
+    __Idea:__ create foggy Cube grid to learn about the library
 
   
       O | O
