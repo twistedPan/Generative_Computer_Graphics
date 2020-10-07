@@ -23,7 +23,7 @@ document.body.appendChild( renderer.domElement );
 // Camera
 var myCamera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
 //var myCamera = new THREE.OrthographicCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-myCamera.position.set( 0, -600, 500 );
+myCamera.position.set( 0, -700, 400 );
 myCamera.lookAt( 0, 0, 0 );
 
 // Controlls
@@ -37,7 +37,7 @@ controls.update();
 //===============================================================================
 
 // Lights
-const directional_light = new THREE.DirectionalLight( 0xFFFFFF, 0.8);
+const directional_light = new THREE.DirectionalLight( "#0000ff", 0.8);
 directional_light.position.set(0, 0, 400);
 directional_light.target.position.set(0, 0, 0);
 //const helper = new THREE.DirectionalLightHelper(directional_light);
@@ -50,7 +50,7 @@ myScene.add(point_light);
 
 //myScene.add(helper);
 
-const skyColor = "#00ff00"; const groundColor = "#ffffff";
+const skyColor = "#ffffff"; const groundColor = "#ffffff";
 const hemisphere_light = new THREE.HemisphereLight( skyColor, groundColor, 0.6);
 hemisphere_light.position.set(0,0,-10);
 myScene.add(hemisphere_light);
@@ -70,23 +70,30 @@ class Element {
         this.sY = _size[1];
         this.sZ = _size[2];
         //this.color = _color;
-        this.ringIndex = 0;
-        this.color = colors5[Math.floor(Math.random() * colors5.length)];
-        this.model = 0;
-        this.specFreq = 0;
+        this.ringIndex = 0; // 0 -> ring number
+        this.color = colBW[Math.floor(Math.random() * colBW.length)];
+        this.model = 0; // mesh
+        this.specFreq = 0; // 0 - 255
     }
 
     createModel(points) {
-        this.model = new THREE.Mesh( new THREE.BoxGeometry(this.sX,this.sY,this.sZ),new THREE.MeshPhongMaterial( { color: this.color } ) );
-
-        //this.model = new THREE.Line( new THREE.BufferGeometry().setFromPoints( points ), new THREE.LineBasicMaterial( { color: 0xffffff } ) );
-        
+        let color = lerpFromTo(fromC, toC, this.ringIndex / ringCount)
+        this.model = new THREE.Mesh( 
+            new THREE.BoxGeometry(this.sX,this.sY,this.sZ),
+            new THREE.MeshPhongMaterial( { color: rgbToHex(color) } ) 
+        );
+/* 
+        this.model = new THREE.Line( 
+            new THREE.BufferGeometry().setFromPoints( points ), 
+            new THREE.LineBasicMaterial( { color: 0xffffff } ) 
+        );
+*/
         myScene.add(this.model)
     }
 
-    display(inc, ringIndex) {
+    display(inc) {
         let vec3 = new THREE.Vector3(this.x, this.y, this.z);
-        this.model.position.set(vec3.x + sin(inc), vec3.y + cos(inc), vec3.z) //  + this.specFreq
+        this.model.position.set(vec3.x + sin(inc), vec3.y + cos(inc), vec3.z-(this.ringIndex*cos(inc)*10) + sin(inc)*30) //  + this.specFreq
         //this.model.position.set(vec3.x + sin(inc) * (this.ringIndex*20),vec3.y + cos(inc) * (this.ringIndex*20),vec3.z) //  + this.specFreq
         //this.model.rotation.x = this.specFreq;
     }
@@ -109,22 +116,37 @@ let test = false;
 let elements = [];
 let points = [];
 let elePerRing = [];
-let colors4 = ['#ffffff', '#000000'];
-let colors5 = ['#ffffff','#cccccc','#999999','#737373','#404040','#d9d9d9','#a6a6a6'];
-
+let colLow = [];
+let colMid = [];
+let colHigh = [];
+let colBW = ['#ffffff', '#000000'];
+let fromC = [255, 0, 255];
+let toC =   [0, 255, 0];
+let ringCount = 0;
 let inc = 0;
 let radius = 20;
+// Nice color: #442443
 
-for (let i=6, k=6; i<=1024; i += k){
-    elePerRing.push(i);
+
+for(let i=0; i<18; i++) {
+    let ll = lerpFromTo(fromC, toC, i/17)
+    //console.log("ll", ll, " ", rgbToHex(ll))
 }
 
 
+// array of count of elements per ring
+for (let i=6, k=0; k<=1024; i+=6, k+=i){
+    elePerRing.push(i);
+}
+
+// place on every position an Element
 for (let i=0; i<18; i++, radius+=20 ) {
-    elements[i] = [0];
-    points[i] = [0];
+    elements[i] = [0]; points[i] = [0]; // create second dimension
     let eleC = elePerRing[i];
+    ringCount = i;
+    if (i == 17) eleC = 106; // or else it doesn't add up
     let circleArr = pointsOnCircle(0,0,0,radius,eleC);
+
     for (let j=0; j<eleC; j++) {
         //points[i].push(new THREE.Vector3(circleArr[j].x, circleArr[j].y, 0))
         points[i][j] = new THREE.Vector3(circleArr[j].x, circleArr[j].y, 0);
@@ -132,12 +154,14 @@ for (let i=0; i<18; i++, radius+=20 ) {
         elements[i][j].ringIndex = i;
     }
 }
-let eleC = 0;
+
+// create the threejs models
+let eleCount = 0;
 elements.forEach(i => {
     i.forEach(e => {
-        e.createModel(points[eleC]);
+        e.createModel(points[eleCount]);
     })
-    eleC++;
+    eleCount++;
 })
 
 
@@ -147,6 +171,12 @@ var _cube = new THREE.Mesh( new THREE.BoxGeometry(100,100,100), new THREE.MeshPh
 
 if (test) myScene.add(_cube);
 //myScene.add(light.target);
+
+
+
+
+
+
 
 //===============================================================================
 //  ------------------------------- SCENE ---------------------------------
@@ -179,14 +209,15 @@ function animate() {
                 e.display(inc);
                 
 
-
                 e.model.geometry.vertices[0].z = e.specFreq/2;
                 e.model.geometry.vertices[2].z = e.specFreq/2;
                 e.model.geometry.vertices[5].z = e.specFreq/2;
                 e.model.geometry.vertices[7].z = e.specFreq/2;
                 
+                //e.model.material.color.set("#442443");
+
                 e.model.geometry.verticesNeedUpdate = true;
-                
+                e.model.geometry.colorsNeedUpdate=true
             })
         })
         //console.log(elements[1][1].model.geometry.vertices, "\t", elements[1][1].model.geometry.vertices[0].x);
@@ -323,6 +354,36 @@ function printObject(obj) {
 }
 
 
+// lerps from color1 to color2
+function lerpFromTo(from, to, amt) {
+    amt = Math.max(Math.min(amt, 1), 0);
+    let f1 = from[0]; let f2 = from[1]; let f3 = from[2];
+    let t1 = to[0]; let t2 = to[1]; let t3 = to[2];
+
+    // lerp = amt * (stop - start) + start
+
+    let r = amt * (t1 - f1) + f1;
+    r = clamp(r,0,255);
+    let g = amt * (t2 - f2) + f2;
+    g = clamp(g,0,255);
+    let b = amt * (t3 - f3) + f3;
+    b = clamp(b,0,255);
+    
+    let color = [r,g,b]
+    return color;
+}
+
+
+
+function componentToHex(c) {
+    let hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+  }
+  function rgbToHex(color) {
+    return "#" + componentToHex(color[0]) + componentToHex(color[1]) + componentToHex(color[2]);
+  }
+
+
 // Map n to range of start1, stop1 to start2, stop2
 function mapRange(n, start1, stop1, start2, stop2) {const newval = (n - start1) / (stop1 - start1) * (stop2 - start2) + start2;if (newval) {return newval;}if (start2 < stop2) {return limit(newval, start2, stop2);} else {return limit(newval, stop2, start2);}}
 
@@ -341,6 +402,9 @@ function easeIn(a,b,percent) { return a + (b-a)*Math.pow(percent,2)}
 function easeOut(a,b,percent) { return a + (b-a)*(1-Math.pow(1-percent,2))}
 function easeInOut(a,b,percent) { return a + (b-a)*((-Math.cos(percent*Math.PI)/2) + 0.5)}
 
+function clamp(val, min, max) {
+    return Math.max(min, Math.min(max, val));
+}
 
 Number.prototype.fl = function(){return Math.floor(this)}
 Array.prototype.rngValue = function(){return this[Math.floor(Math.random() * this.length)]}
