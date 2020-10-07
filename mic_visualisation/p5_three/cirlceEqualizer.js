@@ -218,7 +218,7 @@ function animate() {
                 //e.model.material.color.set("#442443");
 
                 e.model.geometry.verticesNeedUpdate = true;
-                e.model.geometry.colorsNeedUpdate=true
+                //e.model.geometry.colorsNeedUpdate=true
             })
         })
 
