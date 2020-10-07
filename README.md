@@ -24,24 +24,24 @@
   - ### Day 1
   
   
-      __Idea:__
-      get Mic input and create interactable sketch.
+    __Idea:__
+    get Mic input and create interactable sketch.
 
-      __Problem:__
-      Web technologies safety standarts.
-      Web browser didn't get the input from the mic, p5 was throwing error messages, some older sketches still working the new ones didn't worked.
+    __Problem:__
+    Web technologies safety standarts.
+    Web browser didn't get the input from the mic, p5 was throwing error messages, some older sketches still working the new ones didn't worked.
 
-      __Solution:__
-      Took an older sketch and copy paste the mic part, 
-      wrote a intro page to get trough the chrome safety part
-      ( create user input before audio can play ), 
+    __Solution:__
+    Took an older sketch and copy paste the mic part, 
+    wrote a intro page to get trough the chrome safety part
+    ( create user input before audio can play ), 
 
-      __Realization:__
-      Mic input consists only of volume, no frequenzies possible.
+    __Realization:__
+    Mic input consists only of volume, no frequenzies possible.
 
-1 | 2 | 3
------------- | ------------ | -------------
-<img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(3).png" width="100%">
+      O | O | O
+      ------------ | ------------ | -------------
+      <img src="/pictures/week1.1%20randomBubbles%20(1).png" width="100%"> | <img src="/pictures/week1.1%20randomBubbles%20(2).png" width="100%"> | <img src="/pictures/week1.1%20randomBubbles%20(3).png" width="100%">
 
 ```javascript
 function setup() {
@@ -66,7 +66,7 @@ function setup() {
 
       O | O
       ------------ | ------------
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.2%20poppingBubbles%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.2%20poppingBubbles%20(2).png" width="100%">
+      <img src="/pictures/week1.2%20poppingBubbles%20(1).png" width="100%"> | <img src="/pictures/week1.2%20poppingBubbles%20(2).png" width="100%">
 
 
 
@@ -77,7 +77,7 @@ function setup() {
   
       O | O
       ------------ | ------------
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.3%20startWithThreejs%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.3%20startWithThreejs%20(2).png" width="100%">
+      <img src="/pictures/week1.3%20startWithThreejs%20(1).png" width="100%"> | <img src="/pictures/week1.3%20startWithThreejs%20(2).png" width="100%">
 
 
 
@@ -126,15 +126,22 @@ function setup() {
 
   - ### Day 4
 
-
-    idea: Display each of the 1024 frequencies as point on a circle and create a soundwave-like circle.
-
+    __Homework:__ Read more about the history of gernerative art and look for an artist, whose art you like.
+    
+      Bradley G Munkowitz | Marcin Ignac
+      | :------------: | :------------: |
+      <img src="/pictures/_ora-summoners-halo-Bradley-G-Munkowitz.jpg" width="100%"> | <img src="/pictures/_Inflows-Outflows-by-Marcin-Ignac.png" width="50%">
+    
+    
+    __Idea:__ Display each of the 1024 frequencies as point on a circle and create a soundwave-like circle.
+    Like the picture of Bradley G Munkowitz
+    
 
     1. created a 2D sketch in p5.js 
 
-      1 | 2 | 3
+      O | O | O
       ------------ | ------------ | -------------
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(3).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.1%20prototype2D%20(2).png" width="100%">
+      <img src="/pictures/Week2.1%20prototype2D%20(1).png" width="100%"> | <img src="/pictures/Week2.1%20prototype2D%20(3).png" width="100%"> | <img src="/pictures/Week2.1%20prototype2D%20(2).png" width="100%">
 
     To create the circles around the circles, i fill a 2-dimensional Array 
       ```javascript
@@ -161,7 +168,7 @@ function setup() {
 
       O | O | O
       ------------ | ------------ | -------------
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.2%20protoMovedToThreejs%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.2%20protoMovedToThreejs%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.2%20protoMovedToThreejs%20(3).png" width="100%">
+      <img src="/pictures/Week2.2%20protoMovedToThreejs%20(1).png" width="100%"> | <img src="/pictures/Week2.2%20protoMovedToThreejs%20(2).png" width="100%"> | <img src="/pictures/Week2.2%20protoMovedToThreejs%20(3).png" width="100%">
 
 
 
@@ -176,9 +183,9 @@ function setup() {
     
       O | O | O
       ------------ | ------------ | -------------
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(3).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(4).png" width="100%">
+      <img src="/pictures/Week2.3%20linesNoCubes%20(1).png" width="100%"> | <img src="/pictures/Week2.3%20linesNoCubes%20(3).png" width="100%"> | <img src="/pictures/Week2.3%20linesNoCubes%20(4).png" width="100%">
 
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.3%20linesNoCubes%20(1).gif" width="50%">
+      
 
 
 
@@ -186,9 +193,9 @@ function setup() {
 
       O | O | O
       ------------ | ------------ | -------------
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(3).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(4).png" width="100%">
+      <img src="/pictures/Week2.4%20noCanRefresh%20(2).png" width="100%"> | <img src="/pictures/Week2.4%20noCanRefresh%20(3).png" width="100%"> | <img src="/pictures/Week2.4%20noCanRefresh%20(4).png" width="100%">
 
-<img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.4%20noCanRefresh%20(1).gif" width="50%">
+      
 
 ---
   
@@ -203,14 +210,19 @@ function setup() {
         old 16 * 64 / 64 . 64 . 64 . 64 . 64 . 64 .... 1024
 
         new
-        8 . 12 . 16 . 24 . 32 . 48 . 64 . 96 . 128 . 192 . 333 . 384 ....	        nope
-        8 . 16 . 24 . 32 . 40 . 48 . 54 . 62 . 68 . 74 . 82 . 90 . 98 . 106 ...   nope
-        6 . 12 . 18 . 24 . 30 . 36 . 42 . 333 . 54 . 60 . . . . . 106 = 1024      works
+        n +4, +4, +8, +8, +16, ....
+        8 . 12 . 16 . 24 . 32 . 48 . 64 . 96 . 128 . 192 ....	  nope
+        
+        n = n+8
+        8 . 16 . 24 . 32 . 40 . 48 . 54 . 62 . 68 . 74 ....     nope
+        
+        n = n+6
+        6 . 12 . 18 . 24 . 30 . 36 . 42 . 48 . 54 . 60 . . 108 = 1026   almost works
     
     
       O | O | O
       ------------ | ------------ | -------------
-      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.5%20sortedSectors%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.5%20sortedSectors%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/Week2.5%20sortedSectors%20(3).png" width="100%">
+      <img src="/pictures/Week2.5%20sortedSectors%20(1).png" width="100%"> | <img src="/pictures/Week2.5%20sortedSectors%20(2).png" width="100%"> | <img src="/pictures/Week2.5%20sortedSectors%20(3).png" width="100%">
 
 
     Realisation:
@@ -226,7 +238,35 @@ function setup() {
 
   - ### Day 7
 
+      __Idea:__ Expand the cube circle. 
+      - More colors, maybe a gradient
+      - More forms
+      - More action in the background
 
+      __Problem:__
+      wrote a wrong lerpFunction
+      ```javascript
+      // lerps from color1 to color2
+      function lerpFromTo(from, to, amt) {
+          amt = Math.max(Math.min(amt, 1), 0);
+          let f1 = from[0]; let f2 = from[1]; let f3 = from[2];
+          let t1 = to[0]; let t2 = to[1]; let t3 = to[2];
+
+          let r = f1 - t1 * amt;
+          r = clamp(r,0,255);
+          let g = f2 - t2 * amt;
+          g = clamp(g,0,255);
+          let b = f3 - t3 * amt;
+          b = clamp(b,0,255);
+
+          let color = [r,g,b]
+          return color;
+      }
+      ```
+      __Solution:__
+      correct lerp = amt * (stop - start) + start
+
+      __Realization:__
 
 
 ---
