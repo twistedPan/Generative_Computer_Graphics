@@ -24,24 +24,24 @@
   - ### Day 1
   
   
-      __Idea:__
-      get Mic input and create interactable sketch.
+    __Idea:__
+    get Mic input and create interactable sketch.
 
-      __Problem:__
-      Web technologies safety standarts.
-      Web browser didn't get the input from the mic, p5 was throwing error messages, some older sketches still working the new ones didn't worked.
+    __Problem:__
+    Web technologies safety standarts.
+    Web browser didn't get the input from the mic, p5 was throwing error messages, some older sketches still working the new ones didn't worked.
 
-      __Solution:__
-      Took an older sketch and copy paste the mic part, 
-      wrote a intro page to get trough the chrome safety part
-      ( create user input before audio can play ), 
+    __Solution:__
+    Took an older sketch and copy paste the mic part, 
+    wrote a intro page to get trough the chrome safety part
+    ( create user input before audio can play ), 
 
-      __Realization:__
-      Mic input consists only of volume, no frequenzies possible.
+    __Realization:__
+    Mic input consists only of volume, no frequenzies possible.
 
-1 | 2 | 3
------------- | ------------ | -------------
-<img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(3).png" width="100%">
+      O | O | O
+      ------------ | ------------ | -------------
+      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(1).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(2).png" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/week1.1%20randomBubbles%20(3).png" width="100%">
 
 ```javascript
 function setup() {
@@ -128,9 +128,9 @@ function setup() {
 
     __Homework:__ Read more about the history of gernerative art and look for an artist, whose art you like.
     
-    Bradley G Munkowitz | Marcin Ignac
-    ------------ | ------------
-    <img src="https://github.com/twistedPan/genCom/blob/master/pictures/_ora-summoners-halo-Bradley-G-Munkowitz.jpg" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/_Inflows-Outflows-by-Marcin-Ignac.png" width="100%">
+      Bradley G Munkowitz | Marcin Ignac
+      | :------------: | :------------: |
+      <img src="https://github.com/twistedPan/genCom/blob/master/pictures/_ora-summoners-halo-Bradley-G-Munkowitz.jpg" width="100%"> | <img src="https://github.com/twistedPan/genCom/blob/master/pictures/_Inflows-Outflows-by-Marcin-Ignac.png" width="50%">
     
     
     __Idea:__ Display each of the 1024 frequencies as point on a circle and create a soundwave-like circle.
