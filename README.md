@@ -137,7 +137,7 @@ function setup() {
     
       Bradley G Munkowitz | Marcin Ignac
       | :------------: | :------------: |
-      <img src="pictures/_ora-summoners-halo-Bradley-G-Munkowitz.jpg" width="100%"> | <img src="pictures/_Inflows-Outflows-by-Marcin-Ignac.png" width="50%">
+      <img src="pictures/i_ora-summoners-halo-Bradley-G-Munkowitz.jpg" width="100%"> | <img src="pictures/i_Inflows-Outflows-by-Marcin-Ignac.png" width="50%">
     
     
     __Idea:__ Display each of the 1024 frequencies as point on a circle and create a soundwave-like circle.
