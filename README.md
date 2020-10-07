@@ -69,7 +69,7 @@ function setup() {
       <img src="pictures/week1.2%20poppingBubbles%20(1).png" width="100%"> | <img src="pictures/week1.2%20poppingBubbles%20(2).png" width="100%">
 
 
-
+ 
     started to look at three.js
     
     __Idea:__ create foggy Cube grid to learn about the library
