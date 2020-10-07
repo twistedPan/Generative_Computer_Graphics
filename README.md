@@ -27,8 +27,6 @@
 
   - ### Day 1
   
-    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/growingCircles.html)
-  
     __Idea:__
     get Mic input and create interactable sketch.
 
@@ -44,6 +42,8 @@
     __Realization:__
     Mic input consists only of volume, no frequenzies possible.
 
+    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/growingCircles.html)
+    
       _ | _ | _
       ------------ | ------------ | -------------
       <img src="pictures/week1.1%20randomBubbles%20(1).png" width="100%"> | <img src="pictures/week1.1%20randomBubbles%20(2).png" width="100%"> | <img src="pictures/week1.1%20randomBubbles%20(3).png" width="100%">
@@ -61,14 +61,14 @@ function setup() {
 ---
 
   - ### Day 2
-    
-    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/popping.html)
   
     __Idea:__
     bubbles grow in size through the mic input.
     bubbbles pop if they collide.
     
     __Realization:__ That worked very well.
+    
+    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/popping.html)
 
       _ | _
       ------------ | ------------
@@ -144,7 +144,7 @@ function setup() {
     Like the picture of Bradley G Munkowitz
     
 
-    1. created a 2D sketch in p5.js 
+    created a 2D sketch in p5.js 
     
     [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/circleEq.html)
 
@@ -173,7 +173,7 @@ function setup() {
       ```
 
 
-    2. moved the whole thing to three.js
+    then moved the whole thing to three.js
     
     [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ.html)
 
@@ -189,9 +189,9 @@ function setup() {
   
   - ### Day 5
 
-    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/lines3D_EQ.html)
-
     Switched the cubes with lines and ended up playing with it the whole day
+    
+    [Play here the current version](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/lines3D_EQ.html)
     
       _ | _ | _
       ------------ | ------------ | -------------
@@ -202,10 +202,13 @@ function setup() {
 
 
     deactivated the canvas refresh mode and played with the camera around. 
+    
+    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3DNoRefresh.html)
 
       _ | _ | _
       ------------ | ------------ | -------------
       <img src="pictures/Week2.4%20noCanRefresh%20(2).png" width="100%"> | <img src="pictures/Week2.4%20noCanRefresh%20(3).png" width="100%"> | <img src="pictures/Week2.4%20noCanRefresh%20(4).png" width="100%">
+      <img src="pictures/Week3.2noRefresh%20(2).png" width="100%"> | <img src="pictures/Week3.2noRefresh%20(3).png" width="100%"> | <img src="pictures/Week3.2noRefresh%20(1).png" width="100%">
 
       
 
@@ -283,6 +286,8 @@ function setup() {
       
       __Things Done:__
       Colors are learping from inside to outside
+      
+      [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ.html)
       
       _ | _ | _
       ------------ | ------------ | -------------
