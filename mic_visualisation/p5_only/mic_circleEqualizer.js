@@ -1,36 +1,38 @@
-var widthW = window.innerWidth;
-var heightW = window.innerHeight;
-var widthS = screen.width;
-var heightS = screen.height;
+let widthW = window.innerWidth;
+let heightW = window.innerHeight;
+let widthS = screen.width;
+let heightS = screen.height;
 
-var osc;
-var fft;
-var mic;
+let osc;
+let fft;
+let mic;
 
-var mic_AverageAmp = 0;
-var micValsum = 0;
-var volumeText = 0;
-var t_counter = 0;
+let mic_AverageAmp = 0;
+let micValsum = 0;
+let volumeText = 0;
+let t_counter = 0;
 
-var test = false;
-var amplitudes_Saved = false;
-var gotAverage = false;
-var recordingRoom = false;
+let test = false;
+let amplitudes_Saved = false;
+let gotAverage = false;
+let recordingRoom = false;
+let colorChanged_flag = false;
 
 
 let colors1 = ['#319E0A','#7A7DEB','#87EB63','#EB7F4B','#9E5B3A'];
-let colors2 = ['#59D9FF','#4EDEA0','#76F563','#DEE089','#FACE3E'];
+let colors2 = ['#F0EF97','#A3A35F','#A356A1','#67F090','#4EA368'];
 let colors3 = ['#FA9939','#4B41FF','#49D6DE','#60F55D','#E0D784'];
 let colors4 = ['#ffffff','#cccccc','#999999','#737373','#404040','#d9d9d9','#a6a6a6'];
 let all_colors = [
     ['#319E0A','#7A7DEB','#87EB63','#EB7F4B','#9E5B3A'],
-    ['#59D9FF','#4EDEA0','#76F563','#DEE089','#FACE3E'],
+    ['#F0EF97','#A3A35F','#A356A1','#67F090','#4EA368'],
     ['#FA9939','#4B41FF','#49D6DE','#60F55D','#E0D784'],
+    ['#ffffff','#cccccc','#999999','#737373','#404040','#d9d9d9','#a6a6a6'],
 ];
-
 let elements = [];
 let savedMicValues = [];
 
+let randomColorIndex = Math.floor(Math.random()*all_colors.length);
 
 //===============================================================================
 //  ------------------------------- CLASSES ---------------------------------
@@ -43,11 +45,12 @@ class Element {
         this.shape = _shape;
         this.speed = random(0.01,2);
         this.maxRad = 100;
-        this.color = random(colors1);
+        this.color = random(all_colors[randomColorIndex]);
+        //this.color = random(colors2);
         this.closest_Nbr = 0;
         this.distToNbr = 0;
     }
-    display(input,seconds) {
+    display(s) {
         //stroke(this.color)
         fill(this.color)
         switch(this.shape) {
@@ -125,7 +128,7 @@ function setup() {
 //===============================================================================
 function draw() {
     background(10,10,10,10);
-    stroke(255);
+    //stroke(255);
     strokeWeight(1)
     fill(255);
     translate(width/2, height/2);
@@ -134,12 +137,12 @@ function draw() {
     let vol = mic.getLevel();
     let volEx = vol*10_000;
 
-    var spectrum = fft.analyze();
-    var waveform = fft.waveform();
-    var bass = fft.getEnergy( "bass" );
-    var treble = fft.getEnergy( "treble" );
-    var mid = fft.getEnergy( "mid" );     
-    var custom = fft.getEnergy( 100, 200 );
+    let spectrum = fft.analyze();
+    let waveform = fft.waveform();
+    let bass = fft.getEnergy( "bass" );
+    let treble = fft.getEnergy( "treble" );
+    let mid = fft.getEnergy( "mid" );     
+    let custom = fft.getEnergy( 100, 200 );
 
     for (let i=0, d=0; i<elements.length; i++) {
         for (let j = 0; j < elements[i].length; j++, d++) {
@@ -161,27 +164,39 @@ function draw() {
     // create map for no sound(micAverageAmp) and full sound(??? 500) from -n to n
     let micMap = map(volEx, mic_AverageAmp, 500, 0, 500);
 
-    if (test) {
-        if(frameCount % 10 == 0) volumeText = volEx;
-        text(Math.floor(volumeText*1000)/1000,10,30);
-        rect(width/2 + micMap, height-60, 10,50);
-    }
-
-
-
 
     
     elements.forEach(i => {
         i.forEach(e => {
-            e.display();
+            e.display(s);
             //console.log(e)
         })
     })
 
 
+    // change color every n seconds
+    let colorTimer = 8
+    randomColorIndex = Math.floor(s/colorTimer % (all_colors.length));
+    if (randomColorIndex == s/colorTimer % all_colors.length) {
+        
+        if (!colorChanged_flag) {
+            elements.forEach(i => {
+                i.forEach(e => {
+                    e.color = random(all_colors[randomColorIndex])
+                })
+            })
+        }
+        
+        colorChanged_flag = true;
+    } 
+    else colorChanged_flag = false;
 
 
-
+    if (test) {
+        if(frameCount % 10 == 0) volumeText = volEx;
+        text(Math.floor(volumeText*1000)/1000,10,30);
+        rect(width/2 + micMap, height-60, 10,50);
+    }
 
 
     if (keyIsDown(73)) { // i = info
@@ -260,9 +275,9 @@ function easyTri(x,y,nr) {
 
 // Random Color
 function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
