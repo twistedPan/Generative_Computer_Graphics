@@ -14,6 +14,10 @@
   - [Day 8](#day-8)
   - [Day 9](#day-9)
   
+### Results
+  - [2D with p5](https://twistedpan.github.io/genCom/mic_visualisation/p5_only/)
+  - [3D with p5 & three](https://twistedpan.github.io/genCom/mic_visualisation/p5_three/)
+  
 ---
 ---
 
