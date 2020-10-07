@@ -25,11 +25,14 @@
         }
         #mainFrame {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             min-height: 100vh;
+        }
+        #mainFrame > div {
+            margin: 1%;
         }
         .flexBox {
             flex: 32%;
@@ -95,17 +98,21 @@
     </style>
 </head><body>
     <div id="mainFrame" class="box-1">
-        <a href="lines3D_EQ.html">
-            <div class="btn btn-one flexBox"><span>Messy Lines</span></div>
-        </a>
-
-        <a href="circle3D_EQ.html">
-            <div class="btn btn-one flexBox"><span>Circle Party</span></div>
-        </a>
-
-        <a href="cubeGrid.html">
-            <div class="btn btn-one flexBox"><span>Grid of Cubes</span></div>
-        </a>
+        <div>
+            <a href="lines3D_EQ.html">
+                <div class="btn btn-one flexBox"><span>Messy Lines</span></div>
+            </a>
+        </div>
+        <div>    
+            <a href="circle3D_EQ.html">
+                <div class="btn btn-one flexBox"><span>Circle Party</span></div>
+            </a>
+        </div>
+        <div>
+            <a href="cubeGrid.html">
+                <div class="btn btn-one flexBox"><span>Grid of Cubes</span></div>
+            </a>
+        </div>
     </div>
 </body></html>
 

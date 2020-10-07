@@ -25,15 +25,17 @@
         }
         #mainFrame {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             min-height: 100vh;
         }
+        #mainFrame > div {
+            margin: 1%;
+        }
         .flexBox {
             flex: 32%;
-            margin: 2%;
         }
         .btn {
             line-height: 50px;
@@ -96,17 +98,21 @@
 </head><body>
 
     <div id="mainFrame" class="box-1">
-        <a href="circleEq.html">
-            <div class="btn btn-one flexBox"><span>Circle EQ</span></div>
-        </a>
-
-        <a href="popping.html">
-            <div class="btn btn-one flexBox"><span>Bubble Pop</span></div>
-        </a>
-
-        <a href="growingCircles.html">
-            <div class="btn btn-one flexBox"><span>Growing Circles</span></div>
-        </a>
+        <div>
+            <a href="circleEq.html">
+                <div class="btn btn-one flexBox"><span>Circle EQ</span></div>
+            </a>
+        </div>
+        <div>
+            <a href="popping.html">
+                <div class="btn btn-one flexBox"><span>Bubble Pop</span></div>
+            </a>
+        </div>
+        <div>
+            <a href="growingCircles.html">
+                <div class="btn btn-one flexBox"><span>Growing Circles</span></div>
+            </a>
+        </div>
     </div>
     
 </body></html>
