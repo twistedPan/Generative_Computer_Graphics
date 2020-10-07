@@ -15,8 +15,8 @@
   - [Day 9](#day-9)
   
 ### Results
-  - [2D with p5](https://twistedpan.github.io/genCom/mic_visualisation/p5_only/)
-  - [3D with p5 & three](https://twistedpan.github.io/genCom/mic_visualisation/p5_three/)
+  - [2D with p5](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/)
+  - [3D with p5 & three](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/)
   
 ---
 ---
@@ -27,7 +27,7 @@
 
   - ### Day 1
   
-    [Play it here](https://twistedpan.github.io/genCom/mic_visualisation/p5_only/growingCircles.html)
+    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/growingCircles.html)
   
     __Idea:__
     get Mic input and create interactable sketch.
@@ -62,7 +62,7 @@ function setup() {
 
   - ### Day 2
     
-    [Play it here](https://twistedpan.github.io/genCom/mic_visualisation/p5_only/popping.html)
+    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/popping.html)
   
     __Idea:__
     bubbles grow in size through the mic input.
@@ -80,7 +80,7 @@ function setup() {
     
     __Idea:__ create foggy Cube grid to learn about the library
 
-    [Play it here](https://twistedpan.github.io/genCom/mic_visualisation/p5_three/cubeGrid.html)
+    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/cubeGrid.html)
     
       O | O
       ------------ | ------------
@@ -146,7 +146,7 @@ function setup() {
 
     1. created a 2D sketch in p5.js 
     
-    [Play it here](https://twistedpan.github.io/genCom/mic_visualisation/p5_only/circleEq.html)
+    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/circleEq.html)
 
       O | O | O
       ------------ | ------------ | -------------
@@ -175,7 +175,7 @@ function setup() {
 
     2. moved the whole thing to three.js
     
-    [Play it here](https://twistedpan.github.io/genCom/mic_visualisation/p5_three/circle3D_EQ.html)
+    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ.html)
 
       O | O | O
       ------------ | ------------ | -------------
@@ -189,7 +189,7 @@ function setup() {
   
   - ### Day 5
 
-    [Play it here](https://twistedpan.github.io/genCom/mic_visualisation/p5_three/lines3D_EQ.html)
+    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/lines3D_EQ.html)
 
     Switched the cubes with lines and ended up playing with it the whole day
     
