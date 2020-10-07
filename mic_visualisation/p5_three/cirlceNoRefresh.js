@@ -23,7 +23,7 @@ document.body.appendChild( renderer.domElement );
 // Camera
 var myCamera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
 //var myCamera = new THREE.OrthographicCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-myCamera.position.set( 20, -400, 40 );
+myCamera.position.set( 100, -420, 10 );
 myCamera.lookAt( 0, 0, 0 );
 
 // Controlls
