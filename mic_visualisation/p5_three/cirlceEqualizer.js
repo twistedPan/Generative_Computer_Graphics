@@ -113,6 +113,7 @@ var geometry = new THREE.BufferGeometry().setFromPoints( points );
 // Other Values
 var micInputOnline = false;
 let test = false;
+let pitchColor_flag = false;
 let elements = [];
 let points = [];
 let elePerRing = [];
@@ -125,13 +126,9 @@ let toC =   [51, 0, 51]; // [51, 153, 51]; //
 let ringCount = 0;
 let inc = 0;
 let radius = 20;
+let colorTimer = 8;
+let colorIndex = 0;
 // Nice color: #442443
-
-
-for(let i=0; i<18; i++) {
-    let ll = lerpFromTo(fromC, toC, i/17)
-    //console.log("ll", ll, " ", rgbToHex(ll))
-}
 
 
 // array of count of elements per ring
@@ -175,9 +172,6 @@ if (test) myScene.add(_cube);
 
 
 
-
-
-
 //===============================================================================
 //  ------------------------------- SCENE ---------------------------------
 //=============================================================================== 
@@ -198,17 +192,24 @@ function animate() {
 
     if (micInputOnline) {
 
+        let s = second();
+        colorIndex = Math.floor(s/colorTimer % ringCount);
+        if (colorIndex == s/colorTimer % ringCount) {
+            
+        }
+
+        // update spectrum values
         for (let i=0, d=0; i<elements.length; i++) {
             for (let j = 0; j < elements[i].length; j++, d++) {
                 elements[i][j].specFreq = spectrum[d];
             }
         }
 
+        // change cubes
         elements.forEach(i => {
             i.forEach(e => {
                 e.display(inc);
                 
-
                 e.model.geometry.vertices[0].z = e.specFreq/2;
                 e.model.geometry.vertices[2].z = e.specFreq/2;
                 e.model.geometry.vertices[5].z = e.specFreq/2;
@@ -220,26 +221,34 @@ function animate() {
                 e.model.geometry.colorsNeedUpdate=true
             })
         })
-        //console.log(elements[1][1].model.geometry.vertices, "\t", elements[1][1].model.geometry.vertices[0].x);
 
+        if (bass > 200) {
+            console.log("animate -> bass", bass)
+        }
+        if (mid > 190) {
+            console.log("animate -> mid", mid)
+        }
+        if (treble > 130) {
+            console.log("animate -> treble", treble)
+        }
         
         // Test Cube
-if (test) {
-    
-    _cube.geometry.vertices[0].z = spectrum[0];
-    _cube.geometry.vertices[2].z = spectrum[0];
-    _cube.geometry.vertices[5].z = spectrum[0];
-    _cube.geometry.vertices[7].z = spectrum[0];
-    
-    let moX = map(mouseX, 0,window.innerWidth, -600,600)
-    let moY = map(mouseY, 0,window.innerHeight, -600,600)
-    
-    _cube.position.x = moX;
-    _cube.position.y = -moY;
-    
-    _cube.geometry.verticesNeedUpdate = true;
-    
-}
+        if (test) {
+            
+            _cube.geometry.vertices[0].z = spectrum[0];
+            _cube.geometry.vertices[2].z = spectrum[0];
+            _cube.geometry.vertices[5].z = spectrum[0];
+            _cube.geometry.vertices[7].z = spectrum[0];
+            
+            let moX = map(mouseX, 0,window.innerWidth, -600,600)
+            let moY = map(mouseY, 0,window.innerHeight, -600,600)
+            
+            _cube.position.x = moX;
+            _cube.position.y = -moY;
+            
+            _cube.geometry.verticesNeedUpdate = true;
+            
+        }
 
         //light.target.position.x = mosX
         //light.target.position.z = mosY
