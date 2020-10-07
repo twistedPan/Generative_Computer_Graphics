@@ -20,18 +20,20 @@
             flex-wrap: wrap;
             font-family: 'Open Sans Condensed', sans-serif;
         }
+        a {
+            text-decoration: none;
+        }
         #mainFrame {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             justify-content: center;
             align-items: center;
             text-align: center;
             min-height: 100vh;
         }
-        #startBtn {
-            color: white;
-            text-decoration: none;
-            z-index: 100;
+        .flexBox {
+            flex: 32%;
+            margin: 2%;
         }
         .btn {
             line-height: 50px;
@@ -92,9 +94,19 @@
 
     </style>
 </head><body>
+
     <div id="mainFrame" class="box-1">
-        <a href="audio.html" id="startBtn">
-        <div class="btn btn-one"><span>START SKETCH</span></div>
-    </a>
+        <a href="circleEq.html">
+            <div class="btn btn-one flexBox"><span>Circle EQ</span></div>
+        </a>
+
+        <a href="popping.html">
+            <div class="btn btn-one flexBox"><span>Bubble Pop</span></div>
+        </a>
+
+        <a href="growingCircles.html">
+            <div class="btn btn-one flexBox"><span>Growing Circles</span></div>
+        </a>
     </div>
+    
 </body></html>

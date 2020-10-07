@@ -151,7 +151,7 @@ class Element {
 //  ------------------------------- SETUP ---------------------------------
 //===============================================================================
 function setup() {
-    createCanvas(widthW, heightS);
+    createCanvas(widthW, heightW);
     frameRate(30)
     textSize(10)
     noStroke();

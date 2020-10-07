@@ -20,18 +20,20 @@
             flex-wrap: wrap;
             font-family: 'Open Sans Condensed', sans-serif;
         }
+        a {
+            text-decoration: none;
+        }
         #mainFrame {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             justify-content: center;
             align-items: center;
             text-align: center;
             min-height: 100vh;
         }
-        #startBtn {
-            color: white;
-            text-decoration: none;
-            z-index: 100;
+        .flexBox {
+            flex: 32%;
+            margin: 2%;
         }
         .btn {
             line-height: 50px;
@@ -40,7 +42,7 @@
             width: 250px;
             cursor: pointer;
         }
-        .box-1 { background-color: #080711; }
+        .box-1 { background-color: #040408; }
         .btn-one {
             color: #FFF;
             transition: all 0.3s;
@@ -83,7 +85,7 @@
             height: 100%;
             z-index: 1;
             transition: all 0.3s;
-            background-color: rgba(255,255,255,0.1);
+            background-color: rgba(255,255,255,0.03);
         }
         .btn-one:hover::after {
             opacity: 0;	
@@ -93,8 +95,36 @@
     </style>
 </head><body>
     <div id="mainFrame" class="box-1">
-        <a href="audio.html" id="startBtn">
-        <div class="btn btn-one"><span>START SKETCH</span></div>
-    </a>
+        <a href="lines3D_EQ.html">
+            <div class="btn btn-one flexBox"><span>Messy Lines</span></div>
+        </a>
+
+        <a href="circle3D_EQ.html">
+            <div class="btn btn-one flexBox"><span>Circle Party</span></div>
+        </a>
+
+        <a href="cubeGrid.html">
+            <div class="btn btn-one flexBox"><span>Grid of Cubes</span></div>
+        </a>
     </div>
 </body></html>
+
+
+
+<!--
+
+    <div id="mainFrame" class="box-1">
+        <a href="circleEq.html">
+            <div class="btn btn-one flexBox"><span>Circle EQ</span></div>
+        </a>
+
+        <a href="popping.html">
+            <div class="btn btn-one flexBox"><span>Bubble Pop</span></div>
+        </a>
+
+        <a href="growingCircles.html">
+            <div class="btn btn-one flexBox"><span>Growing Circles</span></div>
+        </a>
+    </div>
+
+-->
