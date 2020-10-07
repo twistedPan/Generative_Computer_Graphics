@@ -278,8 +278,8 @@ function setup() {
       __Solution:__
       correct lerp = amt * (stop - start) + start
 
-      __Realization:__
-
+      Published the gitHub repository, changed all paths and edited the index files to display every sketch
+      
 
 ---
 
