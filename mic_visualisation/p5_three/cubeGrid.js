@@ -10,9 +10,15 @@ let blockAbs = 10;
 
 // THREEJS Values
 var myScene = new THREE.Scene();
-var renderer = new THREE.WebGLRenderer(); //{ alpha: true }
+const canvas = document.querySelector('#c');
+const renderer = new THREE.WebGLRenderer({
+    canvas,
+    //preserveDrawingBuffer: true,
+    alpha: true,
+});
 renderer.setSize( window.innerWidth, window.innerHeight );  // Canvas Size
-renderer.setClearColor( "#E6E6FA");
+//renderer.autoClearColor = false;
+renderer.setClearColor( "#FFFFFF");
 document.body.appendChild( renderer.domElement );
 
 const color = 0xFFFFFF;  // white
@@ -33,14 +39,14 @@ controls.update();
 
 
 // Lights
-const directional_light = new THREE.DirectionalLight( 0xFFFFFF, 0.3);
+const directional_light = new THREE.DirectionalLight( 0xFFFFFF, 0.8);
 directional_light.position.set(10, 1, 5);
 directional_light.target.position.set(0, 0, 0);
 //const helper = new THREE.DirectionalLightHelper(directional_light);
 myScene.add(directional_light);
 
-const point_light = new THREE.PointLight("#F0DA49", 1);
-point_light.position.set(0,0,0);
+const point_light = new THREE.PointLight("#F0DA49", 5);
+point_light.position.set(0,30,0);
 const helper = new THREE.PointLightHelper(point_light);
 myScene.add(point_light);
 
@@ -125,7 +131,7 @@ function animate() {
         });
 
         directional_light.position.set(myCamera.position.x,myCamera.position.y,myCamera.position.z)
-        console.log("animate -> myCamera.position", myCamera.position, " Light",directional_light.position)
+        //console.log("animate -> myCamera.position", myCamera.position, " Light",directional_light.position)
         //_cube.position.x = mosX;
         //_cube.position.y = -mosY;
         //_cube.position.z = (mosX+mosY) / 2;

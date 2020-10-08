@@ -5,8 +5,14 @@ import { OrbitControls } from "https://unpkg.com/three@0.120.1/examples/jsm/cont
 
 // THREEJS Values
 var myScene = new THREE.Scene();
-var renderer = new THREE.WebGLRenderer(); //{ alpha: true }
+const canvas = document.querySelector('#c');
+const renderer = new THREE.WebGLRenderer({
+    canvas,
+    //preserveDrawingBuffer: true,
+    alpha: true,
+});
 renderer.setSize( window.innerWidth, window.innerHeight );  // Canvas Size
+//renderer.autoClearColor = false;
 renderer.setClearColor( "#000000");
 document.body.appendChild( renderer.domElement );
 
@@ -15,6 +21,7 @@ myScene.fog = new THREE.Fog(0xFFFFFF, 50, 300);
 
 // Camera
 var myCamera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+//var myCamera = new THREE.OrthographicCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
 myCamera.position.set( 0, 0, 130);
 myCamera.lookAt( 0, 0, 0 );
 
@@ -24,6 +31,9 @@ var controls = new OrbitControls( myCamera, renderer.domElement );
 controls.update();
 
 
+//===============================================================================
+//  ------------------------------- LIGHTS ---------------------------------
+//===============================================================================
 
 // Lights
 const directional_light = new THREE.DirectionalLight( 0xFFFFFF, 0.6);
@@ -42,7 +52,7 @@ const hemisphere_light = new THREE.HemisphereLight( skyColor, groundColor, 0.1);
 hemisphere_light.position.set(0,0,0);
 //myScene.add(hemisphere_light);
 
-myScene.add(helper);
+//myScene.add(helper);
 
 
 
@@ -90,8 +100,8 @@ function animate() {
     }
 
     if (micInputOnline) {
-        let mosX = map(mouseX, 0, window.innerWidth, -10, 10)
-        let mosY = map(mouseY, 0, window.innerHeight, -10, 10)
+        //let mosX = map(mouseX, 0, window.innerWidth, -10, 10)
+        //let mosY = map(mouseY, 0, window.innerHeight, -10, 10)
 
         let sinV = clamp(Math.sin(-inc),-1,0)
         let cosV = clamp(Math.cos(inc),-1,0)
