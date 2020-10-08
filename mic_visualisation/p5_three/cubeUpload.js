@@ -10,13 +10,11 @@ renderer.setSize( window.innerWidth, window.innerHeight );  // Canvas Size
 renderer.setClearColor( "#000000");
 document.body.appendChild( renderer.domElement );
 
-const color = 0xFFFFFF;
-const near = 50;
-const far = 300;
-myScene.fog = new THREE.Fog(color, near, far);
+// Fog (color, near, far)
+myScene.fog = new THREE.Fog(0xFFFFFF, 50, 300);
 
 // Camera
-var myCamera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
+var myCamera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
 myCamera.position.set( 0, 0, 130);
 myCamera.lookAt( 0, 0, 0 );
 
