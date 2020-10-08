@@ -66,53 +66,50 @@ for (let i=0; i<grid3d.length; i++) {
 }
 
 // Form
+var _cube = new THREE.Mesh( new THREE.BoxGeometry(4,4,4), new THREE.MeshPhongMaterial( { color: 0x00aa00 } ) );
+
 for (let i = 0; i < grid3d.length; i++) {
     //let cube = new THREE.Mesh( new THREE.BoxGeometry(4,4,4), new THREE.MeshPhongMaterial( { color: 0x00aa00, shininess: 150 } ))
     //let cube = new THREE.Mesh( new THREE.BoxGeometry(4,4,4), new THREE.MeshToonMaterial( { color: 0x00aa00, shininess: 100 } ))
-    let cube = new THREE.Mesh( new THREE.BoxGeometry(4,4,4), new THREE.MeshPhysicalMaterial( { color: 0x00aa00, shininess: 100 } ))
+    let cube = new THREE.Mesh( new THREE.BoxGeometry(4,4,4), new THREE.MeshPhysicalMaterial( { color: 0x00aa00 } ))
     cubes.push(cube)
     myScene.add(cube)
 }
 
+//myScene.add(_cube);
+//myScene.add(light.target);
 
 //===============================================================================
 //  ------------------------------- SCENE ---------------------------------
 //=============================================================================== 
+
 function animate() { 
     requestAnimationFrame( animate );
     
-    if (typeof window.soundValues != "undefined") {
-        micInputOnline = true;
+    //let mosX = mapRange(mouseX, 0, window.innerWidth, -10, 10)
+    //let mosY = mapRange(mouseY, 0, window.innerHeight, -10, 10)
+
+
+    for (let i = 0; i < cubes.length; i++) {
+        const cube = cubes[i];
+
+        let vec3 = new THREE.Vector3(grid3d[i].x, grid3d[i].y, grid3d[i].z).multiplyScalar(blockAbs);
+
+        cube.position.set(
+            vec3.x,
+            vec3.y,
+            vec3.z
+        )
     }
 
-    if (micInputOnline) {
-        let mosX = map(mouseX, 0, window.innerWidth, -10, 10)
-        let mosY = map(mouseY, 0, window.innerHeight, -10, 10)
+    directional_light.position.set(myCamera.position.x,myCamera.position.y,myCamera.position.z)
 
 
-        for (let i = 0; i < cubes.length; i++) {
-            const cube = cubes[i];
-
-            let vec3 = new THREE.Vector3(grid3d[i].x, grid3d[i].y, grid3d[i].z).multiplyScalar(blockAbs);
-
-            cube.position.set(
-                vec3.x,
-                vec3.y,
-                vec3.z
-            )
-        }
-
-        cubes.forEach(e => {
-            e.rotation.x = mosX/10;
-        });
-
-        directional_light.position.set(myCamera.position.x,myCamera.position.y,myCamera.position.z)
-
-    }
 
     inc += 0.01;
     controls.update();
-    renderer.render( myScene, myCamera ); } 
+    renderer.render( myScene, myCamera ); 
+} 
 animate();
 
 
