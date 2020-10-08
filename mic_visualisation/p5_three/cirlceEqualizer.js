@@ -116,6 +116,7 @@ let radius = 20;
 let colorTimer = 8;
 let colorIndex = 0;
 let lerpBonus = 4;
+let t_counter = 0;
 // Nice color: #442443 / rgb(68, 36, 67)
 
 
@@ -386,6 +387,33 @@ function printObject(obj) {
     });
 }
 
+
+let hasStarted = false;
+let counting = false;
+function startTimer(s, val, valPlus) {
+    if (!hasStarted) {
+        hasStarted = true;
+        counting = true;
+        t_counter = 0;
+    }
+
+    if (t_counter > s) {
+        // timer ends here
+        counting = false;
+        hasStarted = false;
+    }
+
+    if (counting) {
+        val += valPlus;
+        // do stuff here while time is running
+    }
+    return val;
+}
+
+function timeIt() {
+    t_counter++;
+}
+setInterval(timeIt, 1000);
 
 // lerps from color1 to color2
 function lerpFromTo(from, to, amt) {

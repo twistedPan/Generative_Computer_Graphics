@@ -1,6 +1,9 @@
 import * as THREE from "https://unpkg.com/three@0.120.1/build/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.120.1/examples/jsm/controls/OrbitControls.js";
-//import { GUI } from 'https://threejsfundamentals.org/threejs/../3rdparty/dat.gui.module.js';
+import Stats from 'https://unpkg.com/three@0.120.1/examples/jsm/libs/stats.module.js';
+
+const stats = new Stats();
+//document.body.appendChild(stats.dom);
 
 let aspect = screen.innerWidth / screen.innerHeight;
 let frustumSize = 600;
@@ -73,7 +76,8 @@ let tanV = 0;
 let rotVal = 0;
 var micInputOnline = false;
 let grid3d = create3DGrid(cubeSize,cubeSize,cubeSize);
-let table3d = create3DTable(20,10,0);
+let table3d = create3DTable(50,25,0);
+//console.log("table3d", table3d.length)
 var cubes = [];
 let randomValues = [];
 let randomIndex = 0;
@@ -166,6 +170,8 @@ function animate() {
 
     incVal = clamp(incVal, 0.001, 0.09);
     inc += incVal;
+
+    stats.update();
     controls.update();
     renderer.render( myScene, myCamera ); } 
 animate();
