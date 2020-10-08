@@ -83,12 +83,6 @@ class Element {
             new THREE.BoxGeometry(this.sX,this.sY,this.sZ),
             new THREE.MeshPhongMaterial( { color: rgbToHex(color) } ) 
         );
-/* 
-        this.model = new THREE.Line( 
-            new THREE.BufferGeometry().setFromPoints( points ), 
-            new THREE.LineBasicMaterial( { color: 0xffffff } ) 
-        );
-*/
         myScene.add(this.model)
     }
 
@@ -99,24 +93,50 @@ class Element {
     }
 }
 
+class Vector {
+    constructor(_x, _y, _z) {
+        this.x = _x || 0
+        this.y = _y || 0
+        this.y = _z || 0
+    }
+    add(v2) {
+        return new Vector(this.x + v2.x, this.y + v2.y, this.z + v2.z);
+    }
+
+    subtract(v2) {
+        return new Vector(this.x - v2.x, this.y - v2.y, this.z - v2.z);
+    }
+
+    multiply(scalar) {
+        return new Vector(this.x * scalar, this.y * scalar, this.z * scalar);
+    }
+}
 
 // Other Values
 var micInputOnline = false;
 let test = false;
-let pitchColor_flag = false;
+let camMove_flag = false;
 let elements = [];
 let points = [];
 let elePerRing = [];
 let colBW = ['#ffffff', '#000000'];
 let fromC = [255, 0, 204]; // [255, 0, 255]; // 
 let toC =   [25, 25, 77]; // [51, 153, 51]; // 
+let camIndex = 0;
+let cameraPositions = [
+    new Vector(300,0,-800),
+    new Vector(-600,700,0),
+    new Vector(0,0,0),
+    new Vector(0,0,0),
+]
 let ringCount = 0;
 let inc = 0;
 let radius = 20;
 let colorTimer = 8;
 let colorIndex = 0;
 let lerpBonus = 4;
-let t_counter = 0;
+let cubicX = 0;
+let cubicStep = 0.01
 // Nice color: #442443 / rgb(68, 36, 67)
 
 
@@ -181,9 +201,7 @@ function animate() {
 
         let s = second();
         colorIndex = Math.floor(s/colorTimer % ringCount);
-        if (colorIndex == s/colorTimer % ringCount) {
-            
-        }
+        if (colorIndex == s/colorTimer % ringCount) {}
 
         // update spectrum values
         for (let i=0, d=0; i<elements.length; i++) {
@@ -240,20 +258,20 @@ function animate() {
         })
 
         if (bass > 200) {
-            console.log("animate -> bass", bass)
+            //console.log("animate -> bass", bass)
         }
         if (mid > 190) {
-            console.log("animate -> mid", mid)
+            //console.log("animate -> mid", mid)
         }
         if (treble > 130) {
-            console.log("animate -> treble", treble)
+            //console.log("animate -> treble", treble)
         }
 
-        let bassMap = mapRange(bass, 0,255, 0,18);
-        let midMap = mapRange(mid, 0,255, 0,18);
-        let trebleMap = mapRange(treble, 0,255, 0,55);
+        let bassMap = mapRange(bass, 0,255, 0,32);
+        let midMap = mapRange(mid, 0,255, 0,32);
+        let trebleMap = mapRange(treble, 0,255, 0,80);
         let bgColor = [bassMap, midMap, trebleMap];
-        console.log("animate -> bass", bass, "mid", mid, "treble", treble)
+        //console.log("animate -> bass", bass, "mid", mid, "treble", treble)
         renderer.setClearColor(rgbToHex(bgColor));
         
         // Test Cube
@@ -278,7 +296,20 @@ function animate() {
         //light.target.position.z = mosY
     }
     inc += 0.01;
+    //console.log("animate -> inc", inc)
 
+    let cbV = cubic_interpolate(cameraPositions[0],cameraPositions[1],cameraPositions[2],cameraPositions[3],
+        cubicX);
+
+    if (cubicX >= 1) {
+        cubicX = 0
+        cameraPositions.push(cameraPositions.shift()) // first to last
+    }
+    cubicX += cubicStep;
+
+
+    //moveCamToPoint(inc,3);
+    myCamera.position.set(cbV.x,cbV.y,cbV.z);
 
     controls.update();
     renderer.render( myScene, myCamera ); } 
@@ -286,8 +317,37 @@ animate();
 
 
 
+function moveCamToPoint(inc,timeFrame) {
+    if (Math.floor(inc) % timeFrame == 0 && !camMove_flag && Math.floor(inc) != 0) {
+        camMove_flag = true;
+        cubicX = 0;
+        cameraPositions.push(cameraPositions.shift())
+        console.log("moveCamToPoint -> cameraPositions", cameraPositions[0], " inc", inc)
+    }
+    else if(Math.floor(inc) % (timeFrame+1) == 0) {
+        camMove_flag = false;
+    }
 
+    cubic_interpolate(
+        cameraPositions[camIndex+0],
+        cameraPositions[camIndex+1],
+        cameraPositions[camIndex+2],
+        cameraPositions[camIndex+3],
+        cubicX)
+}
 
+function cubic_interpolate(v0, v1, v2, v3, x) {
+    let P = (v3.subtract(v2)).subtract((v0.subtract(v1))) // (v3 - v2) - (v0 - v1)
+    let Q = (v0.subtract(v1)).subtract(P) // (v0 - v1) - P
+    let R = v2.subtract(v0) //  v2 -v0
+    let S = v1
+
+    P = P.multiply(Math.pow(x, 3))
+    Q = Q.multiply(Math.pow(x, 2))
+    R = R.multiply(x)
+
+    return P.add(Q.add(R.add(S))) //P*Math.pow(x,3) + Q*Math.pow(x,2) + R*x + S
+}
 
 
 
@@ -388,32 +448,7 @@ function printObject(obj) {
 }
 
 
-let hasStarted = false;
-let counting = false;
-function startTimer(s, val, valPlus) {
-    if (!hasStarted) {
-        hasStarted = true;
-        counting = true;
-        t_counter = 0;
-    }
 
-    if (t_counter > s) {
-        // timer ends here
-        counting = false;
-        hasStarted = false;
-    }
-
-    if (counting) {
-        val += valPlus;
-        // do stuff here while time is running
-    }
-    return val;
-}
-
-function timeIt() {
-    t_counter++;
-}
-setInterval(timeIt, 1000);
 
 // lerps from color1 to color2
 function lerpFromTo(from, to, amt) {
