@@ -70,6 +70,7 @@ let dir_flag = false;
 let sinV = 0;
 let cosV = 0;
 let tanV = 0;
+let rotVal = 0;
 var micInputOnline = false;
 let grid3d = create3DGrid(cubeSize,cubeSize,cubeSize);
 let table3d = create3DTable(20,10,0);
@@ -79,13 +80,17 @@ let randomIndex = 0;
 
 for (let i=0; i<table3d.length; i++) {
     randomValues.push(Math.random());
+    //randomValues.push(rngOf(-1,1));
 }
 
 // Form
 for (let i = 0; i < table3d.length; i++) {
     let cube = new THREE.Mesh( 
         new THREE.BoxGeometry(cubeSize,cubeSize,cubeSize), 
-        new THREE.MeshPhongMaterial( { color: 0x00aa00, shininess: 100, reflectivity: 1 } ))
+        new THREE.MeshPhongMaterial( { color: 0x00aa00, shininess: 0, reflectivity: 0 } ))
+        //new THREE.MeshLambertMaterial( { color: 0x00aa00, reflectivity: 0 } ))
+        // MeshStandardMaterial has 2 settings roughness and metalness
+        //new THREE.MeshStandardMaterial( { color: 0x00aa00, roughness: 1, metalness: 1 } ))
     cubes.push(cube)
     myScene.add(cube)
 }
@@ -119,7 +124,11 @@ function animate() {
             colorDir *= -1;
             randomIndex = Math.random()*randomValues.length << 0
         } else if (sinV < 0) dir_flag = false;
-        else colorDir *=-1;
+        else {
+            colorDir *=-1;
+            rotVal = lerpFromToVal(0,90,Math.abs(Math.sin(inc)))
+        }
+        //console.log("animate -> sinV", Math.sin(inc), "rotVal", rotVal)
 
         //console.log("animate -> randomIndex", randomIndex, " sinV", sinV)
         
@@ -129,9 +138,9 @@ function animate() {
         
         for (let i = 0; i < cubes.length; i++) {
             const cube = cubes[i];
-            cube.rotation.x = 90;
-            //cube.rotation.y = toRad();
-            cube.rotation.z = toRad(45);
+            cube.rotation.x = 90 + toRad(rotVal)*2;
+            //cube.rotation.y = toRad(rotVal);
+            cube.rotation.z = toRad(45) + toRad(rotVal)/2;
 
             let cubeColor;
             if(colorDir < 0) cubeColor = cubes[(cubes.length-1)-i];
@@ -277,6 +286,13 @@ function printObject(obj) {
     });
 }
 
+
+// lerps from from to to
+function lerpFromToVal(from, to, amt) {
+    amt = clamp(amt,0,1);
+    let v = amt * (to - from) + from;
+    return v;
+}
 
 // Map n to range of start1, stop1 to start2, stop2
 function mapRange(n, start1, stop1, start2, stop2) {const newval = (n - start1) / (stop1 - start1) * (stop2 - start2) + start2;if (newval) {return newval;}if (start2 < stop2) {return limit(newval, start2, stop2);} else {return limit(newval, stop2, start2);}}

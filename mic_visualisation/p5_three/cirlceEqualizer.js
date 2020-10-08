@@ -406,6 +406,12 @@ function lerpFromTo(from, to, amt) {
     return color;
 }
 
+// lerps from from to to
+function lerpFromToVal(from, to, amt) {
+    amt = clamp(amt,0,1);
+    let v = amt * (to - from) + from;
+    return v;
+}
 
 
 function componentToHex(c) {
