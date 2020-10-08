@@ -105,67 +105,52 @@ for (let i = 0; i < table3d.length; i++) {
 function animate() { 
     requestAnimationFrame( animate );
     //console.log(window.soundValues);
+
     
-    if (typeof window.soundValues != "undefined") {
-        micInputOnline = true;
-        var spectrum = window.soundValues.spectrum;
-        var waveform = window.soundValues.waveform;
-        var bass = window.soundValues.bass;
-        var mid = window.soundValues.mid; 
-        var treble = window.soundValues.treble;
-        var micVolEx = window.soundValues.ampAverage;
-        var micAmp = window.soundValues.amp;
+    if (sinV == 0 && !dir_flag) {
+        dir_flag = true;
+        dir *= -1;
+        colorDir *= -1;
+        randomIndex = Math.random()*randomValues.length << 0
+    } else if (sinV < 0) dir_flag = false;
+    else {
+        colorDir *=-1;
+        rotVal = lerpFromToVal(0,90,Math.abs(Math.sin(inc)))
+    }
+    //console.log("animate -> sinV", Math.sin(inc), "rotVal", rotVal)
+
+    //console.log("animate -> randomIndex", randomIndex, " sinV", sinV)
+    
+    sinV = clamp(Math.sin(-inc),-1,0)
+    cosV = clamp(Math.cos(inc),-1,0)
+    tanV = clamp(Math.tan(inc),-50,50)
+    
+    for (let i = 0; i < cubes.length; i++) {
+        const cube = cubes[i];
+        cube.rotation.x = 90 + toRad(rotVal)*2;
+        //cube.rotation.y = toRad(rotVal);
+        cube.rotation.z = toRad(45) + toRad(rotVal)/2;
+
+        let cubeColor;
+        if(colorDir < 0) cubeColor = cubes[(cubes.length-1)-i];
+        else cubeColor = cubes[i];
+        let startColor = new THREE.Color(0x30cfd0) // 
+        let endColor = new THREE.Color(0x330867) // 
+        cubeColor.material.color = new THREE.Color(startColor).lerp(endColor, i/cubes.length*tanV)
+
+        let vec3 = new THREE.Vector3(table3d[i].x, table3d[i].y, table3d[i].z).multiplyScalar(blockAbs);
+        cube.position.set(
+            vec3.x + (sinV*randomValues[i]*20) * dir,
+            vec3.y + (cosV*randomValues[i]*20), 
+            vec3.z
+        )
     }
 
-    if (micInputOnline) {
-        //let mosX = map(mouseX, 0, window.innerWidth, -10, 10)
-        //let mosY = map(mouseY, 0, window.innerHeight, -10, 10)
+    let lightRange = clamp(tanV, -50, 50)
+    //console.log("animate -> tanV", tanV)
+    point_light.intensity = lightRange;
+    directional_light.position.set(myCamera.position.x,myCamera.position.y,myCamera.position.z+200)
 
-        
-        if (sinV == 0 && !dir_flag) {
-            dir_flag = true;
-            dir *= -1;
-            colorDir *= -1;
-            randomIndex = Math.random()*randomValues.length << 0
-        } else if (sinV < 0) dir_flag = false;
-        else {
-            colorDir *=-1;
-            rotVal = lerpFromToVal(0,90,Math.abs(Math.sin(inc)))
-        }
-        //console.log("animate -> sinV", Math.sin(inc), "rotVal", rotVal)
-
-        //console.log("animate -> randomIndex", randomIndex, " sinV", sinV)
-        
-        sinV = clamp(Math.sin(-inc),-1,0)
-        cosV = clamp(Math.cos(inc),-1,0)
-        tanV = clamp(Math.tan(inc),-50,50)
-        
-        for (let i = 0; i < cubes.length; i++) {
-            const cube = cubes[i];
-            cube.rotation.x = 90 + toRad(rotVal)*2;
-            //cube.rotation.y = toRad(rotVal);
-            cube.rotation.z = toRad(45) + toRad(rotVal)/2;
-
-            let cubeColor;
-            if(colorDir < 0) cubeColor = cubes[(cubes.length-1)-i];
-            else cubeColor = cubes[i];
-            let startColor = new THREE.Color(0x30cfd0) // 
-            let endColor = new THREE.Color(0x330867) // 
-            cubeColor.material.color = new THREE.Color(startColor).lerp(endColor, i/cubes.length*tanV)
-
-            let vec3 = new THREE.Vector3(table3d[i].x, table3d[i].y, table3d[i].z).multiplyScalar(blockAbs);
-            cube.position.set(
-                vec3.x + (sinV*randomValues[i]*20) * dir,
-                vec3.y + (cosV*randomValues[i]*20), 
-                vec3.z
-            )
-        }
-
-        let lightRange = clamp(tanV, -50, 50)
-        //console.log("animate -> tanV", tanV)
-        point_light.intensity = lightRange;
-        directional_light.position.set(myCamera.position.x,myCamera.position.y,myCamera.position.z+200)
-    }
 
 
     incVal = clamp(incVal, 0.001, 0.09);
