@@ -24,7 +24,7 @@ document.body.appendChild( renderer.domElement );
 var myCamera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
 //var myCamera = new THREE.OrthographicCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
 myCamera.position.set( 0, -700, 400 );
-//myCamera.lookAt( 0, 0, 0 );
+myCamera.lookAt( 0, 0, 0 );
 
 // Controlls
 var controls = new OrbitControls( myCamera, renderer.domElement );
@@ -79,10 +79,9 @@ class Element {
     createModel(points) {
         //let cMap = mapRange(this.ringIndex)
         let color = lerpFromTo(fromC, toC, this.ringIndex / (ringCount+lerpBonus))
-        this.color = rgbToHex(color);
         this.model = new THREE.Mesh( 
             new THREE.BoxGeometry(this.sX,this.sY,this.sZ),
-            new THREE.MeshPhongMaterial( { color: this.color } ) 
+            new THREE.MeshPhongMaterial( { color: rgbToHex(color) } ) 
         );
         myScene.add(this.model)
     }
@@ -108,17 +107,23 @@ class Vector {
 // Other Values
 var micInputOnline = false;
 let test = false;
-let eventStart_flag = false;
-let eventCounter = 0;
 let elements = [];
 let points = [];
 let elePerRing = [];
 let colBW = ['#ffffff', '#000000'];
 let fromC = [255, 0, 204]; // [255, 0, 255]; // 
 let toC =   [25, 25, 77]; // [51, 153, 51]; // 
+let cameraPositions = [
+    new Vector(0, 0, 0),
+    new Vector(0, 590, 0),
+    new Vector(0,0,0),
+    new Vector(-300,0,800),
+    new Vector(-300,0,800),
+    new Vector(-300,0,800),
+    new Vector(0,0,0),
+]
 let ringCount = 0;
 let inc = 0;
-let incVal = 0.01;
 let radius = 20;
 let colorTimer = 8;
 let colorIndex = 0;
@@ -202,7 +207,7 @@ function animate() {
         elements.forEach(i => {
             i.forEach(e => {
                 e.display(inc);
-                let tmpColor = e.color;
+
                 let clampFreq = clamp(e.specFreq / 10, 5,255);
                 
                 // corner right bottom back
@@ -238,30 +243,21 @@ function animate() {
                 e.model.geometry.vertices[5].z = e.specFreq/2;
                 
 
-                
-                if (e.ringIndex == eventCounter.fl()) {
-                    e.model.material.color.set(elements[16][54].color);
-                }
-                else {
-                    e.model.material.color.set(e.color);
-                }
+                //e.model.material.color.set("#442443");
 
                 e.model.geometry.verticesNeedUpdate = true;
                 //e.model.geometry.colorsNeedUpdate=true
-                
-                
             })
         })
 
         if (bass > 200) {
             //console.log("animate -> bass", bass)
         }
-        if (mid > 100) {
-            console.log("animate -> mid", mid)
-            eventStart_flag = true;
+        if (mid > 190) {
+            //console.log("animate -> mid", mid)
         }
         if (treble > 130) {
-            console.log("animate -> treble", treble)
+            //console.log("animate -> treble", treble)
         }
 
         let bassMap = mapRange(bass, 0,255, 0,32);
@@ -292,18 +288,44 @@ function animate() {
         //light.target.position.x = mosX
         //light.target.position.z = mosY
     }
-    inc += incVal;
+    inc += 0.01;
     //console.log("animate -> inc", inc)
 
-    if (eventStart_flag) {
-        eventStart_flag = false;
-        eventCounter = 0;
+    let cbV = cubic_interpolate(cameraPositions[0],cameraPositions[1],cameraPositions[2],cameraPositions[3],
+        cubicX);
+
+    if (cubicX >= 1) {
+        cubicX = 0
+        cameraPositions.push(cameraPositions.shift()) // first to last
     }
-    eventCounter += incVal*10;
+    cubicX += cubicStep;
+
+
+    myCamera.position.set(cbV.x,cbV.y,cbV.z);
 
     controls.update();
     renderer.render( myScene, myCamera ); } 
 animate();
+
+
+
+function cubic_interpolate(v0, v1, v2, v3, x) {
+    let P = (v3.subtract(v2)).subtract((v0.subtract(v1))) // (v3 - v2) - (v0 - v1)
+    let Q = (v0.subtract(v1)).subtract(P) // (v0 - v1) - P
+    let R = v2.subtract(v0) //  v2 -v0
+    let S = v1
+
+    P = P.multiply(Math.pow(x, 3))
+    Q = Q.multiply(Math.pow(x, 2))
+    R = R.multiply(x)
+
+    return P.add(Q.add(R.add(S))) //P*Math.pow(x,3) + Q*Math.pow(x,2) + R*x + S
+}
+
+
+
+
+
 
 
 
