@@ -44,9 +44,8 @@
 
     [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/growingCircles.html)
     
-      _ | _ | _
-      ------------ | ------------ | -------------
       <img src="pictures/week1.1%20randomBubbles%20(1).png" width="100%"> | <img src="pictures/week1.1%20randomBubbles%20(2).png" width="100%"> | <img src="pictures/week1.1%20randomBubbles%20(3).png" width="100%">
+      ------------ | ------------ | -------------
 
 ```javascript
 function setup() {
@@ -70,10 +69,9 @@ function setup() {
     
     [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/popping.html)
 
-      _ | _
-      ------------ | ------------
+      
       <img src="pictures/week1.2%20poppingBubbles%20(1).png" width="100%"> | <img src="pictures/week1.2%20poppingBubbles%20(2).png" width="100%">
-
+      ------------ | ------------
 
  
     started to look at three.js
@@ -82,10 +80,8 @@ function setup() {
 
     [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/cubeGrid.html)
     
-      _ | _
-      ------------ | ------------
       <img src="pictures/week1.3%20startWithThreejs%20(1).png" width="100%"> | <img src="pictures/week1.3%20startWithThreejs%20(2).png" width="100%">
-
+      ------------ | ------------
 
 
     __Realization:__
@@ -148,9 +144,8 @@ function setup() {
     
     [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/circleEq.html)
 
-      _ | _ | _
-      ------------ | ------------ | -------------
       <img src="pictures/Week2.1%20prototype2D%20(1).png" width="100%"> | <img src="pictures/Week2.1%20prototype2D%20(3).png" width="100%"> | <img src="pictures/Week2.1%20prototype2D%20(2).png" width="100%">
+      ------------ | ------------ | -------------
 
     To create the circles around the circles, i fill a 2-dimensional Array 
       ```javascript
@@ -177,9 +172,8 @@ function setup() {
     
     [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ.html)
 
-      _ | _ | _
-      ------------ | ------------ | -------------
       <img src="pictures/Week2.2%20protoMovedToThreejs%20(1).png" width="100%"> | <img src="pictures/Week2.2%20protoMovedToThreejs%20(2).png" width="100%"> | <img src="pictures/Week2.2%20protoMovedToThreejs%20(3).png" width="100%">
+      ------------ | ------------ | -------------
 
 
 
@@ -193,9 +187,8 @@ function setup() {
     
     [Play here the current version](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/lines3D_EQ.html)
     
-      _ | _ | _
-      ------------ | ------------ | -------------
       <img src="pictures/Week2.3%20linesNoCubes%20(1).png" width="100%"> | <img src="pictures/Week2.3%20linesNoCubes%20(3).png" width="100%"> | <img src="pictures/Week2.3%20linesNoCubes%20(4).png" width="100%">
+      ------------ | ------------ | -------------
 
       
 
@@ -205,9 +198,8 @@ function setup() {
     
     [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3DNoRefresh.html)
 
-      _ | _ | _
-      ------------ | ------------ | -------------
       <img src="pictures/Week2.4%20noCanRefresh%20(2).png" width="100%"> | <img src="pictures/Week2.4%20noCanRefresh%20(3).png" width="100%"> | <img src="pictures/Week2.4%20noCanRefresh%20(4).png" width="100%">
+      ------------ | ------------ | -------------
       <img src="pictures/Week3.2noRefresh%20(2).png" width="100%"> | <img src="pictures/Week3.2noRefresh%20(3).png" width="100%"> | <img src="pictures/Week3.2noRefresh%20(1).png" width="100%">
 
       
@@ -235,9 +227,8 @@ function setup() {
         6 . 12 . 18 . 24 . 30 . 36 . 42 . 48 . 54 . 60 . . 108 = 1026   almost works
     
     
-      _ | _ | _
-      ------------ | ------------ | -------------
       <img src="pictures/Week2.5%20sortedSectors%20(1).png" width="100%"> | <img src="pictures/Week2.5%20sortedSectors%20(2).png" width="100%"> | <img src="pictures/Week2.5%20sortedSectors%20(3).png" width="100%">
+      ------------ | ------------ | -------------
 
 
     Realisation:
@@ -289,9 +280,8 @@ function setup() {
       
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ.html)
       
-      _ | _ | _
-      ------------ | ------------ | -------------
       <img src="pictures/Week3.1%20newColors%20(1).png" width="100%"> | <img src="pictures/Week3.1%20newColors%20(3).png" width="100%"> | <img src="pictures/Week3.1%20newColors%20(4).png" width="100%">
+      ------------ | ------------ | -------------
 
 ---
 
@@ -302,9 +292,9 @@ function setup() {
       
       Wanted to change the light in the "grid of cubes"-script and ended up with a new sketch.
       
-      _ | _ | _
-      ------------ | ------------ | -------------
+      
       <img src="pictures/week3.3theUpload%20(2).png" width="100%"> | <img src="pictures/week3.4theUpload%20(3).png" width="100%"> | <img src="pictures/week3.4theUpload%20(2).png" width="100%">
+      ------------ | ------------ | -------------
       <img src="pictures/week3.5theUpload%20(1).png" width="100%"> | <img src="pictures/week3.5theUpload%20(2).png" width="100%"> | <img src="pictures/week3.5theUpload%20(4).png" width="100%">
 
 
