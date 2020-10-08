@@ -61,12 +61,17 @@ let blockAbs = 10;
 let inc = 0;
 let cubeSize = 20;
 let dir = 1;
+let colorDir = 1;
 let dir_flag = false;
+let sinV = 0;
+let cosV = 0;
+let tanV = 0;
 var micInputOnline = false;
 let grid3d = create3DGrid(cubeSize,cubeSize,cubeSize);
 let table3d = create3DTable(20,10,0);
 var cubes = [];
 let randomValues = [];
+let randomIndex = 0;
 
 for (let i=0; i<table3d.length; i++) {
     randomValues.push(Math.random());
@@ -103,15 +108,21 @@ function animate() {
         //let mosX = map(mouseX, 0, window.innerWidth, -10, 10)
         //let mosY = map(mouseY, 0, window.innerHeight, -10, 10)
 
-        let sinV = clamp(Math.sin(-inc),-1,0)
-        let cosV = clamp(Math.cos(inc),-1,0)
-        let tanV = clamp(Math.tan(inc),-50,50)
-
+        
         if (sinV == 0 && !dir_flag) {
             dir_flag = true;
             dir *= -1;
-        } else dir_flag = false;
+            colorDir *= -1;
+            randomIndex = Math.random()*randomValues.length << 0
+        } else if (sinV < 0) dir_flag = false;
+        else colorDir *=-1;
 
+        console.log("animate -> randomIndex", randomIndex, " sinV", sinV)
+        
+        sinV = clamp(Math.sin(-inc),-1,0)
+        cosV = clamp(Math.cos(inc),-1,0)
+        tanV = clamp(Math.tan(inc),-50,50)
+        
         for (let i = 0; i < cubes.length; i++) {
             const cube = cubes[i];
             cube.rotation.x = 90;
@@ -119,7 +130,7 @@ function animate() {
             cube.rotation.z = toRad(45);
 
             let cubeColor;
-            if(dir < 0) cubeColor = cubes[(cubes.length-1)-i];
+            if(colorDir < 0) cubeColor = cubes[(cubes.length-1)-i];
             else cubeColor = cubes[i];
             let startColor = new THREE.Color(0x30cfd0) // 
             let endColor = new THREE.Color(0x330867) // 
