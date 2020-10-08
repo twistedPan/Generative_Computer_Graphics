@@ -2,6 +2,8 @@ import * as THREE from "https://unpkg.com/three@0.120.1/build/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.120.1/examples/jsm/controls/OrbitControls.js";
 //import { GUI } from 'https://threejsfundamentals.org/threejs/../3rdparty/dat.gui.module.js';
 
+let aspect = screen.innerWidth / screen.innerHeight;
+let frustumSize = 600;
 
 // THREEJS Values
 var myScene = new THREE.Scene();
@@ -20,9 +22,10 @@ document.body.appendChild( renderer.domElement );
 myScene.fog = new THREE.Fog(0xFFFFFF, 50, 300);
 
 // Camera
-var myCamera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-//var myCamera = new THREE.OrthographicCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-myCamera.position.set( 0, 0, 130);
+//let myCamera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+let othoVal = 30;
+let myCamera = new THREE.OrthographicCamera(window.innerWidth / -othoVal, window.innerWidth / othoVal, window.innerHeight / othoVal, window.innerHeight / - othoVal, 1, 2000 );
+myCamera.position.set( 0, 0, 100);
 myCamera.lookAt( 0, 0, 0 );
 
 // Controlls
@@ -36,7 +39,7 @@ controls.update();
 //===============================================================================
 
 // Lights
-const directional_light = new THREE.DirectionalLight( 0xFFFFFF, 0.6);
+const directional_light = new THREE.DirectionalLight( 0xFFFFFF, 0.8);
 directional_light.position.set(0,0,0);
 directional_light.target.position.set(0,0,0);
 const helper = new THREE.DirectionalLightHelper(directional_light);
@@ -59,6 +62,7 @@ hemisphere_light.position.set(0,0,0);
 // Other Values
 let blockAbs = 10;
 let inc = 0;
+let incVal = 0.01
 let cubeSize = 20;
 let dir = 1;
 let colorDir = 1;
@@ -117,7 +121,7 @@ function animate() {
         } else if (sinV < 0) dir_flag = false;
         else colorDir *=-1;
 
-        console.log("animate -> randomIndex", randomIndex, " sinV", sinV)
+        //console.log("animate -> randomIndex", randomIndex, " sinV", sinV)
         
         sinV = clamp(Math.sin(-inc),-1,0)
         cosV = clamp(Math.cos(inc),-1,0)
@@ -144,10 +148,15 @@ function animate() {
             )
         }
 
+        let lightRange = clamp(tanV, -50, 50)
+        //console.log("animate -> tanV", tanV)
+        point_light.intensity = lightRange;
         directional_light.position.set(myCamera.position.x,myCamera.position.y,myCamera.position.z+200)
     }
 
-    inc += 0.01;
+
+    incVal = clamp(incVal, 0.001, 0.09);
+    inc += incVal;
     controls.update();
     renderer.render( myScene, myCamera ); } 
 animate();
@@ -248,10 +257,19 @@ const keyUpdate = e => {
             }
             if (KEYMAP.KeyK) console.log(KEYMAP)
         }
+        if (KEYMAP.ArrowUp) {
+            incVal += 0.001
+        }
+        if (KEYMAP.ArrowDown) {
+            incVal -= 0.001
+        }
+        
+        console.log("incVal", incVal)
     }
 }
 addEventListener(`keydown`, keyUpdate)
 addEventListener(`keyup`, keyUpdate)
+
 
 function printObject(obj) {
     obj.forEach(e => {

@@ -77,7 +77,8 @@ class Element {
     }
 
     createModel(points) {
-        let color = lerpFromTo(fromC, toC, this.ringIndex / ringCount)
+        //let cMap = mapRange(this.ringIndex)
+        let color = lerpFromTo(fromC, toC, this.ringIndex / (ringCount+lerpBonus))
         this.model = new THREE.Mesh( 
             new THREE.BoxGeometry(this.sX,this.sY,this.sZ),
             new THREE.MeshPhongMaterial( { color: rgbToHex(color) } ) 
@@ -93,22 +94,11 @@ class Element {
 
     display(inc) {
         let vec3 = new THREE.Vector3(this.x, this.y, this.z);
-        this.model.position.set(vec3.x + sin(inc), vec3.y + cos(inc), vec3.z-(this.ringIndex*cos(inc)*10)) //  + this.specFreq
+        this.model.position.set(vec3.x + sin(inc), vec3.y + cos(inc), vec3.z-(this.ringIndex*cos(inc)*5)) //  + this.specFreq
         //this.model.position.set(vec3.x + sin(inc) * (this.ringIndex*20),vec3.y + cos(inc) * (this.ringIndex*20),vec3.z) //  + this.specFreq
-        //this.model.rotation.x = this.specFreq;
     }
 }
 
-/*
-
-var points = [];
-points.push( new THREE.Vector3( - 10, 0, 0 ) );
-points.push( new THREE.Vector3( 0, 10, 0 ) );
-points.push( new THREE.Vector3( 10, 0, 0 ) );
-
-var geometry = new THREE.BufferGeometry().setFromPoints( points );
-
-*/
 
 // Other Values
 var micInputOnline = false;
@@ -117,18 +107,16 @@ let pitchColor_flag = false;
 let elements = [];
 let points = [];
 let elePerRing = [];
-let colLow = [];
-let colMid = [];
-let colHigh = [];
 let colBW = ['#ffffff', '#000000'];
-let fromC = [10, 0, 255]; // [255, 0, 255]; // 
-let toC =   [51, 0, 51]; // [51, 153, 51]; // 
+let fromC = [255, 0, 204]; // [255, 0, 255]; // 
+let toC =   [25, 25, 77]; // [51, 153, 51]; // 
 let ringCount = 0;
 let inc = 0;
 let radius = 20;
 let colorTimer = 8;
 let colorIndex = 0;
-// Nice color: #442443
+let lerpBonus = 4;
+// Nice color: #442443 / rgb(68, 36, 67)
 
 
 // array of count of elements per ring
@@ -164,10 +152,8 @@ elements.forEach(i => {
 
 // Form
 var _cube = new THREE.Mesh( new THREE.BoxGeometry(100,100,100), new THREE.MeshPhongMaterial( { color: 0x00aa00 } ) );
-//_cube.position.set(0, 600, -500)
 
 if (test) myScene.add(_cube);
-//myScene.add(light.target);
 
 
 
@@ -209,12 +195,42 @@ function animate() {
         elements.forEach(i => {
             i.forEach(e => {
                 e.display(inc);
+
+                let clampFreq = clamp(e.specFreq / 10, 5,255);
                 
-                e.model.geometry.vertices[0].z = e.specFreq/2;
+                // corner right bottom back
+                //e.model.geometry.vertices[1].z = -e.specFreq/2;
+                e.model.geometry.vertices[1].y = clampFreq;
+                e.model.geometry.vertices[1].x = clampFreq;
+                
+                // corner right bottom front 
+                //e.model.geometry.vertices[3].z = -e.specFreq/2;
+                e.model.geometry.vertices[3].y = -clampFreq;
+                e.model.geometry.vertices[3].x = clampFreq;
+                
+                // corner left bottom back 
+                //e.model.geometry.vertices[4].z = -e.specFreq/2;
+                e.model.geometry.vertices[4].y = clampFreq;
+                e.model.geometry.vertices[4].x = -clampFreq;
+                
+                // corner left bottom front 
+                //e.model.geometry.vertices[6].z = -e.specFreq/2;
+                e.model.geometry.vertices[6].y = -clampFreq;
+                e.model.geometry.vertices[6].x = -clampFreq;
+
+                // corner top right front 
                 e.model.geometry.vertices[2].z = e.specFreq/2;
-                e.model.geometry.vertices[5].z = e.specFreq/2;
+                
+                // corner top right back
+                e.model.geometry.vertices[0].z = e.specFreq/2;
+                
+                // corner top left front
                 e.model.geometry.vertices[7].z = e.specFreq/2;
                 
+                // corner top left back
+                e.model.geometry.vertices[5].z = e.specFreq/2;
+                
+
                 //e.model.material.color.set("#442443");
 
                 e.model.geometry.verticesNeedUpdate = true;
@@ -231,6 +247,13 @@ function animate() {
         if (treble > 130) {
             console.log("animate -> treble", treble)
         }
+
+        let bassMap = mapRange(bass, 0,255, 0,18);
+        let midMap = mapRange(mid, 0,255, 0,18);
+        let trebleMap = mapRange(treble, 0,255, 0,55);
+        let bgColor = [bassMap, midMap, trebleMap];
+        console.log("animate -> bass", bass, "mid", mid, "treble", treble)
+        renderer.setClearColor(rgbToHex(bgColor));
         
         // Test Cube
         if (test) {
@@ -254,6 +277,7 @@ function animate() {
         //light.target.position.z = mosY
     }
     inc += 0.01;
+
 
     controls.update();
     renderer.render( myScene, myCamera ); } 
