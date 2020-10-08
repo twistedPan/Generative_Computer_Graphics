@@ -1,6 +1,5 @@
 import * as THREE from "https://unpkg.com/three@0.120.1/build/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.120.1/examples/jsm/controls/OrbitControls.js";
-//import { GUI } from 'https://threejsfundamentals.org/threejs/../3rdparty/dat.gui.module.js';
 
 
 // Other Values
@@ -67,8 +66,6 @@ for (let i=0; i<grid3d.length; i++) {
 }
 
 // Form
-var _cube = new THREE.Mesh( new THREE.BoxGeometry(4,4,4), new THREE.MeshPhongMaterial( { color: 0x00aa00 } ) );
-
 for (let i = 0; i < grid3d.length; i++) {
     //let cube = new THREE.Mesh( new THREE.BoxGeometry(4,4,4), new THREE.MeshPhongMaterial( { color: 0x00aa00, shininess: 150 } ))
     //let cube = new THREE.Mesh( new THREE.BoxGeometry(4,4,4), new THREE.MeshToonMaterial( { color: 0x00aa00, shininess: 100 } ))
@@ -77,48 +74,27 @@ for (let i = 0; i < grid3d.length; i++) {
     myScene.add(cube)
 }
 
-//myScene.add(_cube);
-//myScene.add(light.target);
 
 //===============================================================================
 //  ------------------------------- SCENE ---------------------------------
 //=============================================================================== 
 function animate() { 
     requestAnimationFrame( animate );
-    //console.log(window.soundValues);
     
     if (typeof window.soundValues != "undefined") {
         micInputOnline = true;
-        var spectrum = window.soundValues.spectrum;
-        var waveform = window.soundValues.waveform;
-        var bass = window.soundValues.bass;
-        var mid = window.soundValues.mid; 
-        var treble = window.soundValues.treble;
-        var micVolEx = window.soundValues.ampAverage;
-        var micAmp = window.soundValues.amp;
     }
 
     if (micInputOnline) {
         let mosX = map(mouseX, 0, window.innerWidth, -10, 10)
         let mosY = map(mouseY, 0, window.innerHeight, -10, 10)
 
-        _cube.rotation.x += micVolEx*50; 
-        _cube.rotation.y += bass/100;
 
         for (let i = 0; i < cubes.length; i++) {
             const cube = cubes[i];
 
             let vec3 = new THREE.Vector3(grid3d[i].x, grid3d[i].y, grid3d[i].z).multiplyScalar(blockAbs);
-            /* cube.position.set(
-                vec3.x * Math.sin(inc),
-                vec3.y * Math.cos(inc),
-                vec3.z * Math.tan(inc)
-            ) */
-            /* cube.position.set(
-                vec3.x + Math.cos(inc) * randomValues[randomValues.length-i]*10,
-                vec3.y + Math.cos(inc) * randomValues[i]*10,
-                vec3.z
-            ) */
+
             cube.position.set(
                 vec3.x,
                 vec3.y,
@@ -131,12 +107,7 @@ function animate() {
         });
 
         directional_light.position.set(myCamera.position.x,myCamera.position.y,myCamera.position.z)
-        //console.log("animate -> myCamera.position", myCamera.position, " Light",directional_light.position)
-        //_cube.position.x = mosX;
-        //_cube.position.y = -mosY;
-        //_cube.position.z = (mosX+mosY) / 2;
-        //light.target.position.x = mosX
-        //light.target.position.z = mosY
+
     }
 
     inc += 0.01;
