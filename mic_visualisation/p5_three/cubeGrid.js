@@ -3,21 +3,26 @@ import { OrbitControls } from "https://unpkg.com/three@0.120.1/examples/jsm/cont
 //import { GUI } from 'https://threejsfundamentals.org/threejs/../3rdparty/dat.gui.module.js';
 
 
+// Other Values
+var micInputOnline = false;
+let grid3d = create3DGrid(4,4,4);
+let blockAbs = 10;
+
 // THREEJS Values
 var myScene = new THREE.Scene();
 var renderer = new THREE.WebGLRenderer(); //{ alpha: true }
 renderer.setSize( window.innerWidth, window.innerHeight );  // Canvas Size
-renderer.setClearColor( "#000000");
+renderer.setClearColor( "#E6E6FA");
 document.body.appendChild( renderer.domElement );
 
-const color = 0xFFFFFF;
-const near = 50;
-const far = 300;
+const color = 0xFFFFFF;  // white
+const near = 10;
+const far = 100;
 myScene.fog = new THREE.Fog(color, near, far);
 
 // Camera
 var myCamera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
-myCamera.position.set( 0, 0, 130);
+myCamera.position.set( 0, 0, 60 );
 myCamera.lookAt( 0, 0, 0 );
 
 // Controlls
@@ -28,50 +33,46 @@ controls.update();
 
 
 // Lights
-const directional_light = new THREE.DirectionalLight( 0xFFFFFF, 0.6);
-directional_light.position.set(0,0,0);
-directional_light.target.position.set(0,0,0);
-const helper = new THREE.DirectionalLightHelper(directional_light);
+const directional_light = new THREE.DirectionalLight( 0xFFFFFF, 0.3);
+directional_light.position.set(10, 1, 5);
+directional_light.target.position.set(0, 0, 0);
+//const helper = new THREE.DirectionalLightHelper(directional_light);
 myScene.add(directional_light);
 
 const point_light = new THREE.PointLight("#F0DA49", 1);
 point_light.position.set(0,0,0);
-//const helper = new THREE.PointLightHelper(point_light);
+const helper = new THREE.PointLightHelper(point_light);
 myScene.add(point_light);
 
-const skyColor = "#ffffff"; const groundColor = "#ffffff";
+const skyColor = "#ffff55"; const groundColor = "#224433";
 const hemisphere_light = new THREE.HemisphereLight( skyColor, groundColor, 0.1);
 hemisphere_light.position.set(0,0,0);
 //myScene.add(hemisphere_light);
 
-myScene.add(helper);
+//myScene.add(helper);
 
-
-
-// Other Values
-let blockAbs = 10;
-let inc = 0;
-let cubeSize = 20;
-let dir = 1;
-let dir_flag = false;
-var micInputOnline = false;
-let grid3d = create3DGrid(cubeSize,cubeSize,cubeSize);
-let table3d = create3DTable(20,10,0);
 var cubes = [];
 let randomValues = [];
+let inc = 0;
 
-for (let i=0; i<table3d.length; i++) {
+
+for (let i=0; i<grid3d.length; i++) {
     randomValues.push(Math.random());
 }
 
 // Form
-for (let i = 0; i < table3d.length; i++) {
-    let cube = new THREE.Mesh( 
-        new THREE.BoxGeometry(cubeSize,cubeSize,cubeSize), 
-        new THREE.MeshPhongMaterial( { color: 0x00aa00, shininess: 100, reflectivity: 1 } ))
+var _cube = new THREE.Mesh( new THREE.BoxGeometry(4,4,4), new THREE.MeshPhongMaterial( { color: 0x00aa00 } ) );
+
+for (let i = 0; i < grid3d.length; i++) {
+    //let cube = new THREE.Mesh( new THREE.BoxGeometry(4,4,4), new THREE.MeshPhongMaterial( { color: 0x00aa00, shininess: 150 } ))
+    //let cube = new THREE.Mesh( new THREE.BoxGeometry(4,4,4), new THREE.MeshToonMaterial( { color: 0x00aa00, shininess: 100 } ))
+    let cube = new THREE.Mesh( new THREE.BoxGeometry(4,4,4), new THREE.MeshPhysicalMaterial( { color: 0x00aa00, shininess: 100 } ))
     cubes.push(cube)
     myScene.add(cube)
 }
+
+//myScene.add(_cube);
+//myScene.add(light.target);
 
 //===============================================================================
 //  ------------------------------- SCENE ---------------------------------
@@ -95,37 +96,41 @@ function animate() {
         let mosX = map(mouseX, 0, window.innerWidth, -10, 10)
         let mosY = map(mouseY, 0, window.innerHeight, -10, 10)
 
-        let sinV = clamp(Math.sin(-inc),-1,0)
-        let cosV = clamp(Math.cos(inc),-1,0)
-        let tanV = clamp(Math.tan(inc),-50,50)
-
-        if (sinV == 0 && !dir_flag) {
-            dir_flag = true;
-            dir *= -1;
-        } else dir_flag = false;
+        _cube.rotation.x += micVolEx*50; 
+        _cube.rotation.y += bass/100;
 
         for (let i = 0; i < cubes.length; i++) {
             const cube = cubes[i];
-            cube.rotation.x = 90;
-            //cube.rotation.y = toRad();
-            cube.rotation.z = toRad(45);
 
-            let cubeColor;
-            if(dir < 0) cubeColor = cubes[(cubes.length-1)-i];
-            else cubeColor = cubes[i];
-            let startColor = new THREE.Color(0x30cfd0) // 
-            let endColor = new THREE.Color(0x330867) // 
-            cubeColor.material.color = new THREE.Color(startColor).lerp(endColor, i/cubes.length*tanV)
-
-            let vec3 = new THREE.Vector3(table3d[i].x, table3d[i].y, table3d[i].z).multiplyScalar(blockAbs);
+            let vec3 = new THREE.Vector3(grid3d[i].x, grid3d[i].y, grid3d[i].z).multiplyScalar(blockAbs);
+            /* cube.position.set(
+                vec3.x * Math.sin(inc),
+                vec3.y * Math.cos(inc),
+                vec3.z * Math.tan(inc)
+            ) */
+            /* cube.position.set(
+                vec3.x + Math.cos(inc) * randomValues[randomValues.length-i]*10,
+                vec3.y + Math.cos(inc) * randomValues[i]*10,
+                vec3.z
+            ) */
             cube.position.set(
-                vec3.x + (sinV*randomValues[i]*20) * dir,
-                vec3.y + (cosV*randomValues[i]*20), 
+                vec3.x,
+                vec3.y,
                 vec3.z
             )
         }
 
-        directional_light.position.set(myCamera.position.x,myCamera.position.y,myCamera.position.z+200)
+        cubes.forEach(e => {
+            e.rotation.x = mosX/10;
+        });
+
+        directional_light.position.set(myCamera.position.x,myCamera.position.y,myCamera.position.z)
+        console.log("animate -> myCamera.position", myCamera.position, " Light",directional_light.position)
+        //_cube.position.x = mosX;
+        //_cube.position.y = -mosY;
+        //_cube.position.z = (mosX+mosY) / 2;
+        //light.target.position.x = mosX
+        //light.target.position.z = mosY
     }
 
     inc += 0.01;
@@ -150,18 +155,6 @@ function create3DGrid(w,h,d) {
                 grid.push({x:i,y:j,z:k})
                 //grid.push(new THREE.Vector3(i,j,k));
             }
-        }
-    }
-    return grid;
-}
-
-function create3DTable(w,h,d) {
-    let grid = []
-    let offset = d
-    for (let i = -w/2; i <= w/2; i+=1) {
-        for (let j = -h/2; j <= h/2; j+=1) {
-            if (i%2 == 0) grid.push({x:i,y:j+0.5,z:0.2})
-            else grid.push({x:i+0,y:j,z:d})
         }
     }
     return grid;
@@ -257,12 +250,8 @@ function getOne(a, b) {arr = [a, b];return arr[Math.round(Math.random())]}
 function easeIn(a,b,percent) { return a + (b-a)*Math.pow(percent,2)}
 function easeOut(a,b,percent) { return a + (b-a)*(1-Math.pow(1-percent,2))}
 function easeInOut(a,b,percent) { return a + (b-a)*((-Math.cos(percent*Math.PI)/2) + 0.5)}
-function clamp(val, min, max) {return Math.max(min, Math.min(max, val));}
 
-function toDeg(rad) {return (rad * 180) / (Math.PI)}
-
-function toRad(deg) {return (deg * Math.PI) / (180)}
-
+Number.prototype.fl = function(){return Math.floor(this)}
 Array.prototype.rngValue = function(){return this[Math.floor(Math.random() * this.length)]}
 
 /*
