@@ -297,7 +297,15 @@ function setup() {
 
   - ### Day 8
 
-
+      __Last Day Goals:__
+      Expand the circular equalizer.
+      
+      Wanted to change the light in the "grid of cubes"-script and ended up with a new sketch.
+      
+      _ | _ | _
+      ------------ | ------------ | -------------
+      <img src="pictures/week3.3theUpload%20(2).png" width="100%"> | <img src="pictures/week3.4theUpload%20(3).png" width="100%"> | <img src="pictures/week3.4theUpload%20(2).png" width="100%">
+      <img src="pictures/week3.5theUpload%20(1).png" width="100%"> | <img src="pictures/week3.5theUpload%20(2).png" width="100%"> | <img src="pictures/week3.5theUpload%20(4).png" width="100%">
 
 
 
@@ -305,8 +313,8 @@ function setup() {
 
   - ### Day 9
 
-
-
+    __Presentation Day__
+    
 
 
 
