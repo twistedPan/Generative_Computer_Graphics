@@ -76,7 +76,7 @@ function setup() {
       
       <img src="pictures/week1.2%20poppingBubbles%20(1).png" width="100%"> | <img src="pictures/week1.2%20poppingBubbles%20(2).png" width="100%">
       ------------ | ------------
-       | 
+       | | 
        
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/popping.html)
  
