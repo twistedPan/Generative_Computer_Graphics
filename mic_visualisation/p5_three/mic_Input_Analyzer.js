@@ -132,7 +132,7 @@ function timeIt() {
 setInterval(timeIt, 1000);
 
 // records every 5 seconds for 1second the room noise
-function getRoomNoise(micInput) {
+function getRoomNoise(micInput,sec) {
 
     // start recording room noise
     if (t_counter == 0) {
