@@ -1,6 +1,6 @@
 <h1>Generative Computer Graphics HS2020</h1>
 
-[THIS PAGE IS PUBLISHED HERE](https://twistedpan.github.io/Generative_Computer_Graphics/)
+[>>THIS REPOSITORY IS PUBLISHED HERE<<](https://twistedpan.github.io/Generative_Computer_Graphics/)
 
 ##### Table of Contents
 - [Week 1](#week-1)
@@ -47,6 +47,7 @@
       <img src="pictures/week1.1%20randomBubbles%20(1).png" width="100%"> | <img src="pictures/week1.1%20randomBubbles%20(2).png" width="100%"> | <img src="pictures/week1.1%20randomBubbles%20(3).png" width="100%">
       ------------ | ------------ | -------------
        | | 
+       
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/growingCircles.html)
       
     
@@ -75,7 +76,8 @@ function setup() {
       
       <img src="pictures/week1.2%20poppingBubbles%20(1).png" width="100%"> | <img src="pictures/week1.2%20poppingBubbles%20(2).png" width="100%">
       ------------ | ------------
-       | 
+       | | 
+       
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/popping.html)
  
  
@@ -154,6 +156,7 @@ function setup() {
       <img src="pictures/Week2.1%20prototype2D%20(1).png" width="100%"> | <img src="pictures/Week2.1%20prototype2D%20(3).png" width="100%"> | <img src="pictures/Week2.1%20prototype2D%20(2).png" width="100%">
       ------------ | ------------ | -------------
        | | 
+       
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/circleEq.html)
 
 
@@ -183,6 +186,7 @@ function setup() {
       <img src="pictures/Week2.2%20protoMovedToThreejs%20(1).png" width="100%"> | <img src="pictures/Week2.2%20protoMovedToThreejs%20(2).png" width="100%"> | <img src="pictures/Week2.2%20protoMovedToThreejs%20(3).png" width="100%">
       ------------ | ------------ | -------------
        | | 
+       
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ_v1.html)
 
 
@@ -196,6 +200,7 @@ function setup() {
       <img src="pictures/Week2.3%20linesNoCubes%20(1).png" width="100%"> | <img src="pictures/Week2.3%20linesNoCubes%20(3).png" width="100%"> | <img src="pictures/Week2.3%20linesNoCubes%20(4).png" width="100%">
       ------------ | ------------ | -------------
        | | 
+       
       [Play here the current version](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/lines3D_EQ.html)
 
 
@@ -207,6 +212,7 @@ function setup() {
       <img src="pictures/Week2.4%20noCanRefresh%20(2).png" width="100%"> | <img src="pictures/Week2.4%20noCanRefresh%20(3).png" width="100%"> | <img src="pictures/Week2.4%20noCanRefresh%20(4).png" width="100%">
       ------------ | ------------ | -------------
       <img src="pictures/Week3.2noRefresh%20(2).png" width="100%"> | <img src="pictures/Week3.2noRefresh%20(3).png" width="100%"> | <img src="pictures/Week3.2noRefresh%20(1).png" width="100%">
+      
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3DNoRefresh.html)
 
 
@@ -236,6 +242,7 @@ function setup() {
       <img src="pictures/Week2.5%20sortedSectors%20(1).png" width="100%"> | <img src="pictures/Week2.5%20sortedSectors%20(2).png" width="100%"> | <img src="pictures/Week2.5%20sortedSectors%20(3).png" width="100%">
       ------------ | ------------ | -------------
        | | 
+       
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ.html)
 
 
@@ -289,6 +296,7 @@ function setup() {
       <img src="pictures/Week3.1%20newColors%20(1).png" width="100%"> | <img src="pictures/Week3.1%20newColors%20(3).png" width="100%"> | <img src="pictures/Week3.1%20newColors%20(4).png" width="100%">
       ------------ | ------------ | -------------
        | | 
+       
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ.html)
 
 
@@ -305,6 +313,7 @@ function setup() {
       <img src="pictures/week3.3theUpload%20(2).png" width="100%"> | <img src="pictures/week3.4theUpload%20(3).png" width="100%"> | <img src="pictures/week3.4theUpload%20(2).png" width="100%">
       ------------ | ------------ | -------------
       <img src="pictures/week3.5theUpload%20(1).png" width="100%"> | <img src="pictures/week3.5theUpload%20(2).png" width="100%"> | <img src="pictures/week3.5theUpload%20(4).png" width="100%">
+      
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/cubeUpload.html)
 
 
@@ -320,7 +329,7 @@ function setup() {
 
     __Presentation Day__
     
-
+    
 
 
 
