@@ -37,20 +37,20 @@ controls.update();
 //===============================================================================
 
 // Lights
-const directional_light = new THREE.DirectionalLight( 0xFFFFFF, 0.8);
+const directional_light = new THREE.DirectionalLight( 0x00FF00, 10);
 directional_light.position.set(0, 0, 400);
 directional_light.target.position.set(0, 0, 0);
 //const helper = new THREE.DirectionalLightHelper(directional_light);
-//myScene.add(directional_light);
+myScene.add(directional_light);
 
-const point_light = new THREE.PointLight("#ffffff", 1);
-point_light.position.set(0,0,300);
+const point_light = new THREE.PointLight("#ffffff", 2);
+point_light.position.set(0,0,200);
 const helper = new THREE.PointLightHelper(point_light);
 myScene.add(point_light);
 
 //myScene.add(helper);
 
-const skyColor = "#ffcc00"; const groundColor = "#ffffff";
+const skyColor = "#ffffff"; const groundColor = "#ffffff";
 const hemisphere_light = new THREE.HemisphereLight( skyColor, groundColor, 0.6);
 hemisphere_light.position.set(0,0,-10);
 myScene.add(hemisphere_light);
@@ -76,7 +76,9 @@ class Element {
     }
 
     createModel(points) {
-        this.model = new THREE.Mesh( new THREE.BoxGeometry(this.sX,this.sY,this.sZ), new THREE.MeshPhongMaterial( { color: this.color } ) );
+        this.model = new THREE.Mesh( 
+            new THREE.BoxGeometry(this.sX,this.sY,this.sZ), 
+            new THREE.MeshPhongMaterial( { color: "#222222" } ) );
         myScene.add(this.model)
     }
 
