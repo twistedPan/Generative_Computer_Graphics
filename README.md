@@ -73,7 +73,8 @@ function setup() {
       
       <img src="pictures/week1.2%20poppingBubbles%20(1).png" width="100%"> | <img src="pictures/week1.2%20poppingBubbles%20(2).png" width="100%">
       ------------ | ------------
-    
+       | 
+       
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/popping.html)
  
     started to look at three.js
@@ -84,7 +85,8 @@ function setup() {
     
       <img src="pictures/week1.3%20startWithThreejs%20(1).png" width="100%"> | <img src="pictures/week1.3%20startWithThreejs%20(2).png" width="100%">
       ------------ | ------------
-      
+       | 
+       
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/cubeGrid.html)
 
     __Realization:__
@@ -149,7 +151,8 @@ function setup() {
 
       <img src="pictures/Week2.1%20prototype2D%20(1).png" width="100%"> | <img src="pictures/Week2.1%20prototype2D%20(3).png" width="100%"> | <img src="pictures/Week2.1%20prototype2D%20(2).png" width="100%">
       ------------ | ------------ | -------------
-    
+       | | 
+       
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/circleEq.html)
 
     To create the circles around the circles, i fill a 2-dimensional Array 
@@ -177,7 +180,8 @@ function setup() {
 
       <img src="pictures/Week2.2%20protoMovedToThreejs%20(1).png" width="100%"> | <img src="pictures/Week2.2%20protoMovedToThreejs%20(2).png" width="100%"> | <img src="pictures/Week2.2%20protoMovedToThreejs%20(3).png" width="100%">
       ------------ | ------------ | -------------
-    
+       | | 
+       
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ_v1.html)
 
 
@@ -190,7 +194,8 @@ function setup() {
     
       <img src="pictures/Week2.3%20linesNoCubes%20(1).png" width="100%"> | <img src="pictures/Week2.3%20linesNoCubes%20(3).png" width="100%"> | <img src="pictures/Week2.3%20linesNoCubes%20(4).png" width="100%">
       ------------ | ------------ | -------------
-
+       | | 
+       
       [Play here the current version](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/lines3D_EQ.html)
 
 
@@ -230,7 +235,8 @@ function setup() {
     
       <img src="pictures/Week2.5%20sortedSectors%20(1).png" width="100%"> | <img src="pictures/Week2.5%20sortedSectors%20(2).png" width="100%"> | <img src="pictures/Week2.5%20sortedSectors%20(3).png" width="100%">
       ------------ | ------------ | -------------
-
+       | | 
+       
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ.html)
 
     __Realisation__:
@@ -282,7 +288,8 @@ function setup() {
       
       <img src="pictures/Week3.1%20newColors%20(1).png" width="100%"> | <img src="pictures/Week3.1%20newColors%20(3).png" width="100%"> | <img src="pictures/Week3.1%20newColors%20(4).png" width="100%">
       ------------ | ------------ | -------------
-
+       | | 
+       
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ.html)
 
 ---
