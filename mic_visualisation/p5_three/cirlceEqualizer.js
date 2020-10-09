@@ -110,21 +110,19 @@ var micInputOnline = false;
 let test = false;
 let eventStart_flag = false;
 let eventCounter = 0;
-let elements = [];
-let points = [];
-let elePerRing = [];
-let colBW = ['#ffffff', '#000000'];
-let fromC = [255, 0, 204]; // [255, 0, 255]; // 
-let toC =   [25, 25, 77]; // [51, 153, 51]; // 
 let ringCount = 0;
-let inc = 0;
-let incVal = 0.01;
-let radius = 20;
-let colorTimer = 8;
 let colorIndex = 0;
-let lerpBonus = 4;
-let cubicX = 0;
-let cubicStep = 0.001
+let radius = 20;
+let inc = 0;
+const colorTimer = 8;
+const lerpBonus = 4;
+const elements = [];
+const points = [];
+const elePerRing = [];
+const colBW = ['#ffffff', '#000000'];
+const fromC = [255, 0, 204]; // [255, 0, 255]; // 
+const toC =   [25, 25, 77]; // [51, 153, 51]; // 
+const incVal = 0.01;
 // Nice color: #442443 / rgb(68, 36, 67)
 
 
@@ -256,7 +254,7 @@ function animate() {
         if (bass > 200) {
             //console.log("animate -> bass", bass)
         }
-        if (mid > 100) {
+        if (mid > 180 && inc > 0.2) {
             console.log("animate -> mid", mid)
             eventStart_flag = true;
         }
