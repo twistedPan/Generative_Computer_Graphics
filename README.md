@@ -1,5 +1,7 @@
 <h1>Generative Computer Graphics HS2020</h1>
 
+[THIS PAGE IS PUBLISHED HERE](https://twistedpan.github.io/Generative_Computer_Graphics/)
+
 ##### Table of Contents
 - [Week 1](#week-1)
   - [Day 1](#day-1)
