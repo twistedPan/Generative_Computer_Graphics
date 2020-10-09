@@ -202,7 +202,7 @@ function setup() {
       ------------ | ------------ | -------------
        | | 
        
-      [Play here the current version](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/lines3D_EQ.html)
+      [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/lines3D_EQ.html)
 
 
 
