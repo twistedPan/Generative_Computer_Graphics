@@ -41,12 +41,12 @@
 
     __Realization:__
     Mic input consists only of volume, no frequenzies possible.
-
-    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/growingCircles.html)
     
       <img src="pictures/week1.1%20randomBubbles%20(1).png" width="100%"> | <img src="pictures/week1.1%20randomBubbles%20(2).png" width="100%"> | <img src="pictures/week1.1%20randomBubbles%20(3).png" width="100%">
       ------------ | ------------ | -------------
-
+      
+      [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/growingCircles.html)
+    
 ```javascript
 function setup() {
 
@@ -67,22 +67,24 @@ function setup() {
     
     __Realization:__ That worked very well.
     
-    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/popping.html)
+    
 
       
       <img src="pictures/week1.2%20poppingBubbles%20(1).png" width="100%"> | <img src="pictures/week1.2%20poppingBubbles%20(2).png" width="100%">
       ------------ | ------------
-
+    
+      [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/popping.html)
  
     started to look at three.js
     
     __Idea:__ create foggy Cube grid to learn about the library
 
-    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/cubeGrid.html)
+    
     
       <img src="pictures/week1.3%20startWithThreejs%20(1).png" width="100%"> | <img src="pictures/week1.3%20startWithThreejs%20(2).png" width="100%">
       ------------ | ------------
-
+      
+      [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/cubeGrid.html)
 
     __Realization:__
     Mic input can also be analyzed with fft.
@@ -142,10 +144,12 @@ function setup() {
 
     created a 2D sketch in p5.js 
     
-    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/circleEq.html)
+    
 
       <img src="pictures/Week2.1%20prototype2D%20(1).png" width="100%"> | <img src="pictures/Week2.1%20prototype2D%20(3).png" width="100%"> | <img src="pictures/Week2.1%20prototype2D%20(2).png" width="100%">
       ------------ | ------------ | -------------
+    
+      [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_only/circleEq.html)
 
     To create the circles around the circles, i fill a 2-dimensional Array 
       ```javascript
@@ -169,13 +173,11 @@ function setup() {
 
 
     then moved the whole thing to three.js
-    
-    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ.html)
 
       <img src="pictures/Week2.2%20protoMovedToThreejs%20(1).png" width="100%"> | <img src="pictures/Week2.2%20protoMovedToThreejs%20(2).png" width="100%"> | <img src="pictures/Week2.2%20protoMovedToThreejs%20(3).png" width="100%">
       ------------ | ------------ | -------------
-
-
+    
+      [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ.html)
 
 
 
@@ -185,24 +187,22 @@ function setup() {
 
     Switched the cubes with lines and ended up playing with it the whole day
     
-    [Play here the current version](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/lines3D_EQ.html)
-    
       <img src="pictures/Week2.3%20linesNoCubes%20(1).png" width="100%"> | <img src="pictures/Week2.3%20linesNoCubes%20(3).png" width="100%"> | <img src="pictures/Week2.3%20linesNoCubes%20(4).png" width="100%">
       ------------ | ------------ | -------------
 
-      
+      [Play here the current version](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/lines3D_EQ.html)
 
 
 
     deactivated the canvas refresh mode and played with the camera around. 
     
-    [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3DNoRefresh.html)
+    
 
       <img src="pictures/Week2.4%20noCanRefresh%20(2).png" width="100%"> | <img src="pictures/Week2.4%20noCanRefresh%20(3).png" width="100%"> | <img src="pictures/Week2.4%20noCanRefresh%20(4).png" width="100%">
       ------------ | ------------ | -------------
       <img src="pictures/Week3.2noRefresh%20(2).png" width="100%"> | <img src="pictures/Week3.2noRefresh%20(3).png" width="100%"> | <img src="pictures/Week3.2noRefresh%20(1).png" width="100%">
 
-      
+      [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3DNoRefresh.html)
 
 ---
   
@@ -230,8 +230,9 @@ function setup() {
       <img src="pictures/Week2.5%20sortedSectors%20(1).png" width="100%"> | <img src="pictures/Week2.5%20sortedSectors%20(2).png" width="100%"> | <img src="pictures/Week2.5%20sortedSectors%20(3).png" width="100%">
       ------------ | ------------ | -------------
 
+      [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ.html)
 
-    Realisation:
+    __Realisation__:
       Math is even harder if you've a hangover.
 
 
@@ -278,10 +279,10 @@ function setup() {
       __Things Done:__
       Colors are learping from inside to outside
       
-      [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ.html)
-      
       <img src="pictures/Week3.1%20newColors%20(1).png" width="100%"> | <img src="pictures/Week3.1%20newColors%20(3).png" width="100%"> | <img src="pictures/Week3.1%20newColors%20(4).png" width="100%">
       ------------ | ------------ | -------------
+
+      [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/circle3D_EQ.html)
 
 ---
 
@@ -299,7 +300,11 @@ function setup() {
 
       [Play it here](https://twistedpan.github.io/Generative_Computer_Graphics/mic_visualisation/p5_three/cubeUpload.html)
 
-After that i continued work on the circular equalizer and added movement to the camera and change the size of the cubes basis depending on the amp.
+      After that i continued work on the circular equalizer and added movement to the camera and change the size of the cubes basis depending on the amp.
+      But i removed it afterwards because the camera moved weird because of the rotation of the whole sketch.
+      
+      __Realisation:__
+      I'm working for too long on this sketch. I've lost interest in it.
 
 ---
 
