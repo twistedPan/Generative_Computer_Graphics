@@ -29,7 +29,7 @@ document.body.appendChild( renderer.domElement );
 //let myCamera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
 let othoVal = 30;
 let myCamera = new THREE.OrthographicCamera(window.innerWidth / -othoVal, window.innerWidth / othoVal, window.innerHeight / othoVal, window.innerHeight / - othoVal, 1, 2000 );
-myCamera.position.set( -50, 50, 100);
+myCamera.position.set( 50, -350, 250);
 myCamera.lookAt( 0, 0, 0 );
 
 // Controlls
@@ -62,13 +62,12 @@ hemisphere_light.position.set(0,0,0);
 //myScene.add(helper);
 
 
-
 // Other Values
-let blockAbs = 10;
 let inc = 0;
 let incVal = 0.01
-let cubeSize = 10;
-let gridAbs = 1.2;
+let cubeSize = 5;
+let blockAbs = 5;
+let gridAbs = 1;
 let dir = 1;
 let colorDir = 1;
 let dir_flag = false;
@@ -77,8 +76,8 @@ let cosV = 0;
 let tanV = 0;
 let rotVal = 0;
 var micInputOnline = false;
-let table3d = create3DTable(10, 20, 0);
-//console.log("table3d", table3d.length)
+let table3d = create3DTable(32, 32, 0);
+console.log("table3d", table3d.length)
 var cubes = [];
 let randomValues = [];
 let randomIndex = 0;
@@ -97,11 +96,12 @@ for (let i = 0; i < table3d.length; i++) {
         // MeshStandardMaterial has 2 settings roughness and metalness
         //new THREE.MeshStandardMaterial( { color: 0x00aa00, roughness: 1, metalness: 1 } ))
     cubes.push(cube)
+    table3d[i].model = cube;
     myScene.add(cube)
 }
 
 
-console.table("table3d", table3d)
+
 
 //===============================================================================
 //  ------------------------------- SCENE ---------------------------------
@@ -110,7 +110,81 @@ function animate() {
     requestAnimationFrame( animate );
     //console.log(window.soundValues);
 
-    
+    if (typeof window.soundValues != "undefined") {
+        micInputOnline = true;
+        var spectrum = window.soundValues.spectrum;
+        var waveform = window.soundValues.waveform;
+        var bass = window.soundValues.bass;
+        var mid = window.soundValues.mid; 
+        var treble = window.soundValues.treble;
+        var micVolEx = window.soundValues.ampAverage;
+        var micAmp = window.soundValues.amp;
+    }
+
+    if (micInputOnline) {
+
+        let s = second();
+
+        // update spectrum values
+        for (let i=0, d=0; i<cubes.length; i++, d++) {
+            table3d[i].freq = spectrum[d];
+        }
+        //console.log("animate -> spectrum[d]", spectrum[5])
+        // change cubes
+        table3d.forEach(e => {
+            
+            let tmpColor = e.color;
+            let clampFreq = mapRange(e.freq ,0,255, 0,1);
+            
+            // corner right bottom back
+            //e.model.geometry.vertices[1].z = -e.freq/2;
+            //e.model.geometry.vertices[1].y = clampFreq*2;
+            //e.model.geometry.vertices[1].x = clampFreq*2;
+            
+            // corner right bottom front 
+            //e.model.geometry.vertices[3].z = -e.freq/2;
+            //e.model.geometry.vertices[3].y = -clampFreq*2;
+            //e.model.geometry.vertices[3].x = clampFreq*2;
+            
+            // corner left bottom back 
+            //e.model.geometry.vertices[4].z = -e.freq/2;
+            //e.model.geometry.vertices[4].y = clampFreq*2;
+            //e.model.geometry.vertices[4].x = -clampFreq*2;
+            
+            // corner left bottom front 
+            //e.model.geometry.vertices[6].z = -e.freq/2;
+            //e.model.geometry.vertices[6].y = -clampFreq*2;
+            //e.model.geometry.vertices[6].x = -clampFreq*2;
+
+            // corner top right front 
+            e.model.geometry.vertices[2].z = e.freq/10;
+            e.model.geometry.vertices[2].y = clampFreq;
+            e.model.geometry.vertices[2].x = clampFreq;
+            
+            // corner top right back
+            e.model.geometry.vertices[0].z = e.freq/10;
+            e.model.geometry.vertices[0].y = clampFreq;
+            e.model.geometry.vertices[0].x = clampFreq;
+            
+            // corner top left front
+            e.model.geometry.vertices[7].z = e.freq/10;
+            e.model.geometry.vertices[7].y = clampFreq;
+            e.model.geometry.vertices[7].x = clampFreq;
+            
+            // corner top left back
+            e.model.geometry.vertices[5].z = e.freq/10;
+            e.model.geometry.vertices[5].y = clampFreq;
+            e.model.geometry.vertices[5].x = clampFreq;
+
+            e.model.geometry.verticesNeedUpdate = true;
+            //e.model.geometry.colorsNeedUpdate=true
+            
+        })
+    }
+
+
+
+
     if (sinV == 0 && !dir_flag) {
         dir_flag = true;
         dir *= -1;
@@ -129,10 +203,14 @@ function animate() {
     cosV = clamp(Math.cos(inc),-1,0)
     tanV = clamp(Math.tan(inc),-50,50)
     
+
+
+
+
     for (let i = 0; i < cubes.length; i++) {
         const cube = cubes[i];
         cube.rotation.x = toRad(0)    ;// + toRad(rotVal)*2;
-        cube.rotation.y = toRad(45);// = toRad(rotVal);
+        cube.rotation.y = toRad(0);// = toRad(rotVal);
         cube.rotation.z = toRad(0);// + toRad(rotVal)/2;
 
         let cubeColor;
@@ -153,12 +231,14 @@ function animate() {
         }
         else {
             cube.position.set(
-                vec3.x * gridAbs,// + (sinV*randomValues[i]*20) * dir,
+                vec3.x * gridAbs + blockAbs/2,// + (sinV*randomValues[i]*20) * dir,
                 vec3.y * gridAbs,// + (cosV*randomValues[i]*20), 
-                vec3.z - cubeSize
+                vec3.z
             )
             cube.material.color = new THREE.Color("#232323");
         }
+
+        //console.log("animate -> cube.freq", cube.freq)
     }
 
     let lightRange = clamp(tanV, -50, 50)
@@ -201,10 +281,10 @@ function create3DGrid(w,h,d) {
 // grid from [a00 (-h/2, -w/2, d) to ann (h/2, w/2, d) ]
 function create3DTable(w,h,d) {
     let grid = [];
-    for (let i = -w/2; i <= w/2; i+=1) {
-        for (let j = -h/2; j <= h/2; j+=1) {
+    for (let i = -w/2; i < w/2; i+=1) {
+        for (let j = -h/2; j < h/2; j+=1) {
           let n = i%2==0 ? 1 : 0;
-            grid.push({x:j, y:i, z:d, n:n})
+            grid.push({x:j, y:i, z:d, n:n, freq:0, model:0})
         }
     }
     return grid;
