@@ -77,7 +77,7 @@ let cosV = 0;
 let tanV = 0;
 let rotVal = 0;
 var micInputOnline = false;
-let table3d = create3DTable(18, 24, 0);
+let table3d = create3DTable(16, 24, 0);
 console.log("table3d", table3d.length)
 console.log("table3d", table3d)
 var cubes = [];
@@ -219,8 +219,8 @@ function animate() {
         //if(colorDir < 0) cubeColor = cubes[(cubes.length-1)-i];
         //else cubeColor = cubes[i];
         cubeColor = cubes[i];
-        let startColor = new THREE.Color(0x30cfd0) // 
-        let endColor = new THREE.Color(0x330867) // 
+        let startColor = new THREE.Color("#40E0D0") // #40E0D0 // 0x30cfd0
+        let endColor = new THREE.Color("#FF0080") // #FF0080 // 0x330867
         
         cubeColor.material.color = new THREE.Color(startColor).lerp(endColor, i/cubes.length) // *tanV
 
@@ -256,8 +256,10 @@ function animate() {
 
     stats.update();
     controls.update();
-    renderer.render( myScene, myCamera ); } 
-animate();
+    renderer.render( myScene, myCamera ); 
+} 
+
+    animate();
 
 
 
