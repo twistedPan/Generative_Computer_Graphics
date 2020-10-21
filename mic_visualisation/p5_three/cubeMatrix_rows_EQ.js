@@ -231,14 +231,14 @@ function animate() {
             cube.position.set(
                 vec3.x * (gridAbs_X),// + (sinV*randomValues[i]*20) * dir,
                 vec3.y * gridAbs_Y - 15,// + (cosV*randomValues[i]*20), 
-                vec3.z - table3d[i].rC * (cubeSize-1.45)
+                vec3.z - table3d[i].rC * (cubeSize-1.5)
             )
         }
         else {
             cube.position.set(
                 vec3.x * (gridAbs_X) + blockAbs/1.4,// + (sinV*randomValues[i]*20) * dir,
                 vec3.y * gridAbs_Y - 15,// + (cosV*randomValues[i]*20), 
-                vec3.z - table3d[i].rC * (cubeSize-1.45)
+                vec3.z - table3d[i].rC * (cubeSize-1.5)
             )
             //cube.material.color = new THREE.Color("#232323"); // row
         }
