@@ -137,7 +137,7 @@ function animate() {
             
             let tmpColor = e.color;
             let clampFreq = mapRange(e.freq ,0,255, 0,1);
-            /*
+            
             // corner right bottom back
             //e.model.geometry.vertices[1].z = -e.freq/2;
             //e.model.geometry.vertices[1].y = clampFreq*2;
@@ -159,45 +159,47 @@ function animate() {
             //e.model.geometry.vertices[6].x = -clampFreq*2;
 
             // corner top right front 
-            e.model.geometry.vertices[2].z = e.freq/10;
-            e.model.geometry.vertices[2].y = clampFreq;
-            e.model.geometry.vertices[2].x = clampFreq;
+            //e.model.geometry.vertices[2].z = e.freq/10;
+            //e.model.geometry.vertices[2].y = clampFreq;
+            //e.model.geometry.vertices[2].x = clampFreq;
             
             // corner top right back
-            e.model.geometry.vertices[0].z = e.freq/10;
-            e.model.geometry.vertices[0].y = clampFreq;
-            e.model.geometry.vertices[0].x = clampFreq;
+            //e.model.geometry.vertices[0].z = e.freq/10;
+            //e.model.geometry.vertices[0].y = clampFreq;
+            //e.model.geometry.vertices[0].x = clampFreq;
             
             // corner top left front
-            e.model.geometry.vertices[7].z = e.freq/10;
-            e.model.geometry.vertices[7].y = clampFreq;
-            e.model.geometry.vertices[7].x = clampFreq;
+            //e.model.geometry.vertices[7].z = e.freq/10;
+            //e.model.geometry.vertices[7].y = clampFreq;
+            //e.model.geometry.vertices[7].x = clampFreq;
             
             // corner top left back
-            e.model.geometry.vertices[5].z = e.freq/10;
-            e.model.geometry.vertices[5].y = clampFreq;
-            e.model.geometry.vertices[5].x = clampFreq;
+            //e.model.geometry.vertices[5].z = e.freq/10;
+            //e.model.geometry.vertices[5].y = clampFreq;
+            //e.model.geometry.vertices[5].x = clampFreq;
 
             e.model.geometry.verticesNeedUpdate = true;
             //e.model.geometry.colorsNeedUpdate=true
-            */
+            
         })
     }
 
 
 
 
-    if (sinV == 0 && !dir_flag) {
+    if (sinV == 0 && !dir_flag) 
+    {
         dir_flag = true;
         dir *= -1;
         colorDir *= -1;
         randomIndex = Math.random()*randomValues.length << 0
     } else if (sinV < 0) dir_flag = false;
-    else {
+    else 
+    {
         colorDir *=-1;
         rotVal = lerpFromToVal(0,90,Math.abs(Math.sin(inc)))
     }
-    //console.log("animate -> sinV", Math.sin(inc), "rotVal", rotVal)
+    console.log("animate -> sinV", Math.sin(inc), "rotVal", rotVal)
 
     //console.log("animate -> randomIndex", randomIndex, " sinV", sinV)
     
@@ -209,18 +211,19 @@ function animate() {
 
     let blockMover = 0;
 
-    for (let i = 0; i < cubes.length; i++) {
+    for (let i = 0; i < cubes.length; i++) 
+    {
         const cube = cubes[i];
-        cube.rotation.x = toRad(0)    ;// + toRad(rotVal)*2;
-        cube.rotation.y = toRad(45);// = toRad(rotVal);
-        cube.rotation.z = toRad(0);// + toRad(rotVal)/2;
+        cube.rotation.x = toRad(0) + toRad(rotVal)*2;
+        cube.rotation.y = toRad(45)// + toRad(rotVal);
+        cube.rotation.z = toRad(0)// + toRad(rotVal)/2;
 
         let cubeColor;
         //if(colorDir < 0) cubeColor = cubes[(cubes.length-1)-i];
         //else cubeColor = cubes[i];
         cubeColor = cubes[i];
-        let startColor = new THREE.Color("#40E0D0") // #40E0D0 // 0x30cfd0
-        let endColor = new THREE.Color("#FF0080") // #FF0080 // 0x330867
+        let startColor = new THREE.Color("#e1eec3") // #40E0D0 // 0x30cfd0
+        let endColor = new THREE.Color(0x330867) // #f05053 // #FF0080 // 0x330867
         
         cubeColor.material.color = new THREE.Color(startColor).lerp(endColor, i/cubes.length) // *tanV
 
@@ -229,8 +232,8 @@ function animate() {
 
         if (table3d[i].n > 0) {
             cube.position.set(
-                vec3.x * (gridAbs_X),// + (sinV*randomValues[i]*20) * dir,
-                vec3.y * gridAbs_Y - 15,// + (cosV*randomValues[i]*20), 
+                vec3.x * (gridAbs_X)        ,// + (sinV*randomValues[i]*20) * dir,
+                vec3.y * gridAbs_Y - 15     ,// + (cosV*randomValues[i]*20), 
                 vec3.z - table3d[i].rC * (cubeSize-1.5)
             )
         }
