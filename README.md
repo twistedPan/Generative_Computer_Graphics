@@ -206,7 +206,7 @@ function setup() {
 
 
 
-    deactivated the canvas refresh mode and played with the camera around. 
+    deactivated the canvas refresh mode and played around with the camera. 
     
     
 
@@ -248,7 +248,7 @@ function setup() {
 
 
     __Realisation__:
-      Math is even harder if you've a hangover.
+      Math is even harder if you're hangover.
 
 
 ---
