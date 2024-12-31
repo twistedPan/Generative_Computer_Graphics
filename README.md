@@ -292,7 +292,7 @@ function setup() {
       Published the gitHub repository, changed all paths and edited the index files to display every sketch
       
       __Things Done:__
-      Colors are learping from inside to outside
+      Colors are lerping from inside to outside
       
       <img src="pictures/Week3.1%20newColors%20(1).png" width="100%"> | <img src="pictures/Week3.1%20newColors%20(3).png" width="100%"> | <img src="pictures/Week3.1%20newColors%20(4).png" width="100%">
       ------------ | ------------ | -------------
